@@ -1,0 +1,371 @@
+/* ==========================================================================
+   Responsive Styles
+   ========================================================================== */
+
+/* Large screens (up to 1200px) */
+@media (max-width: 1200px) {
+  .hero .container {
+    gap: 2rem;
+  }
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Medium screens (up to 992px) */
+@media (max-width: 992px) {
+  body, html {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Navbar */
+  .mobile-toggle {
+      display: block;
+    }
+  .nav-brand {
+    position: relative;
+    z-index: 1000;
+  }
+  .mobile-toggle {
+    position: relative;
+    z-index: 1000;
+  }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--primary);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    z-index: 999;
+  }
+  .nav-links.active {
+    right: 0;
+  }
+  .nav-links .nav-link {
+    font-size: 1.25rem;
+  }
+
+  /* Home */
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-subtitle {
+    margin: 0 auto 2.5rem;
+  }
+  .hero-cta {
+    justify-content: center;
+  }
+  .hero-visual {
+    margin-top: 3rem;
+  }
+  
+  .split-section .container {
+    grid-template-columns: 1fr;
+  }
+  .split-section:nth-child(even) .container .split-content {
+    order: -1;
+  }
+
+  .portal-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Auth */
+  .auth-layout {
+    flex-direction: column;
+  }
+  .auth-visual {
+    padding: 3rem 1.5rem;
+  }
+  .form-options {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Dashboard */
+  .sidebar {
+    width: 100%;
+    left: -100%;
+    z-index: 2000;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+  .dashboard-main {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .dashboard-header { flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .welcome-section { width: 100%; margin-top: 80px; }
+  .dashboard-header h1, .dashboard-header h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+  .dashboard-header p {
+    font-size: 0.75rem !important;
+  }
+  .header-actions {
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+  }
+  .dash-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small screens (up to 768px) */
+@media (max-width: 768px) {
+  /* Aggressively stack all inline grids */
+  .grid[style*="grid-template-columns"],
+  .split-section[style*="grid-template-columns"],
+  div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .workflow-track {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+  .workflow-line {
+    display: none;
+  }
+  .workflow-progress {
+    width: 100%;
+    height: 0%; /* GSAP animates height now */
+  }
+  .workflow-steps {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 30px;
+    gap: 2rem;
+  }
+  .workflow-step {
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    gap: 1.5rem;
+  }
+  .ws-icon {
+    margin-bottom: 0;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Extra small screens (up to 576px) */
+@media (max-width: 576px) {
+  /* Ensure absolutely no horizontal scroll */
+  body, html { overflow-x: hidden; width: 100%; max-width: 100%; }
+
+  .hero-dashboard-mock {
+    padding: 1.5rem;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    transform: translate(-50%, -50%) !important; /* Remove 3D rotation causing overflow */
+  }
+  .mock-stat .amount {
+    font-size: 1.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .mock-cards {
+    flex-direction: column;
+  }
+  .float-card {
+    display: none; /* Hide floating cards on very small screens to avoid overlap */
+  }
+  
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .quick-actions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ==========================================================================
+   Custom Grid Utilities (Replaced Inline Styles)
+   ========================================================================== */
+.custom-grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+.custom-grid-3-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.custom-grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.custom-grid-1-15 {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+}
+.custom-grid-2-col-center {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.custom-grid-2-1 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.custom-grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .custom-grid-1-15,
+  .custom-grid-2-col-center,
+  .custom-grid-2-1 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-grid-2-col,
+  .custom-grid-3-col {
+    grid-template-columns: 1fr;
+  }
+  .custom-grid-auto-fill,
+  .custom-grid-auto-fit {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Mobile Optimization (320px, 375px, 425px)
+   ========================================================================== */
+@media (max-width: 425px) {
+  .section { padding: 3rem 0; }
+  h1, .hero-title { font-size: 2rem; }
+  h2, .section-header h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  .btn { width: 100%; margin-bottom: 0.5rem; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .btn-group { flex-direction: column; width: 100%; gap: 0.5rem; }
+  img { max-width: 100%; height: auto; }
+  
+  /* Touch friendly forms */
+  input, select, textarea { min-height: 44px; font-size: 16px; /* Prevents iOS zoom */ }
+  
+  /* Dashboard specific mobile */
+  .dashboard-main { padding: 1rem; }
+  .stat-card, .dash-panel { padding: 1rem; }
+}
+
+@media (max-width: 375px) {
+  .hero-title { font-size: 1.75rem; }
+  .container { padding: 0 1rem; }
+}
+
+@media (max-width: 320px) {
+  .hero-title { font-size: 1.5rem; }
+  h2 { font-size: 1.5rem; }
+}
+
+/* ==========================================================================
+   Dashboard Table Responsiveness
+   ========================================================================== */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table-responsive table {
+  width: 100%;
+  min-width: 600px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-mobile-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    flex-shrink: 0;
+    margin-right: auto !important;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .mobile-logo {
+    display: flex !important;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 !important;
+    filter: invert(1);
+  }
+  .header-actions {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 1.5rem !important;
+    background-color: var(--bg-color);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+}
+@media (max-width: 992px) {
+  .header-actions .user-info {
+    display: none !important;
+  }
+}
+

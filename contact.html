@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - STACKLY</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-align: center !important;
+        }
+    </style>
+</head>
+
+<body style="background-color: var(--bg-color);">
+
+    <!-- Navbar -->
+    <nav class="navbar" style="background: var(--primary);">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 40px; width: auto;">
+            </a>
+
+            <button class="mobile-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="payroll-solutions.html" class="nav-link">Payroll Solutions</a>
+                <a href="hr-management.html" class="nav-link">HR Management</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+
+                <div style="display: flex; gap: 1rem; align-items: center; margin-left: 1rem;">
+                    <a href="login.html" class="btn btn-accent" style="padding: 0.5rem 1.25rem;">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Header -->
+    <section class="section bg-primary text-neutral" style="padding-top: 150px; padding-bottom: 4rem;">
+        <div class="container text-center">
+            <h1 class="hero-title">Let's Talk Payroll</h1>
+            <p class="hero-subtitle" style="margin: 0 auto;">Our team is ready to help you streamline your HR and
+                financial operations.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="split-section" class="custom-grid-1-15">
+
+                <!-- Contact Info -->
+                <div data-aos="fade-right">
+                    <h3 style="margin-bottom: 2rem;">Get in Touch</h3>
+
+                    <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 12px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 0.25rem;">Sales Inquiry</h4>
+                            <p>+1 (800) 123-4567</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 12px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 0.25rem;">Support</h4>
+                            <p>support@stacklypayroll.com</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 12px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 0.25rem;">Office Location</h4>
+                            <p>123 Financial District<br>New York, NY 10004</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="glass-card" style="padding: 3rem; background: var(--neutral);" data-aos="fade-left">
+                    <form class="validate-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" class="form-control" required>
+                                <div class="error-message">This field is required</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" class="form-control" required>
+                                <div class="error-message">This field is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Work Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                                <div class="error-message">Please enter a valid email</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                                <div class="error-message">Please enter a valid phone number</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="employees">Number of Employees</label>
+                                <select id="employees" class="form-control" required>
+                                    <option value="">Select...</option>
+                                    <option value="1-50">1 - 50</option>
+                                    <option value="51-200">51 - 200</option>
+                                    <option value="201-500">201 - 500</option>
+                                    <option value="500+">500+</option>
+                                </select>
+                                <div class="error-message">Please select an option</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service Required</label>
+                                <select id="service" class="form-control" required>
+                                    <option value="">Select...</option>
+                                    <option value="payroll">Payroll Management</option>
+                                    <option value="hr">HR Management</option>
+                                    <option value="both">Full Suite</option>
+                                </select>
+                                <div class="error-message">Please select a service</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" class="form-control" required minlength="10"></textarea>
+                            <div class="error-message">Message is required (min 10 chars)</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1rem;">Send
+                            Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Frequently Asked Questions (FAQ) -->
+    <section class="section bg-neutral">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to our most common inquiries.</p>
+            </div>
+            <div class="accordion-container" data-aos="fade-up" data-aos-delay="100">
+                <div class="accordion-item active">
+                    <div class="accordion-header">
+                        How long does onboarding typically take? <i class="fa-solid fa-chevron-down transition"></i>
+                    </div>
+                    <div class="accordion-content">
+                        For companies under 50 employees, we can get you fully onboarded in under 48 hours. Enterprise
+                        clients usually take 1-2 weeks depending on data migration complexity.
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Do you handle international payroll? <i class="fa-solid fa-chevron-down transition"></i>
+                    </div>
+                    <div class="accordion-content">
+                        Yes, STACKLY currently supports localized payroll compliance and tax filing in over 45
+                        countries, with more being added every quarter.
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Can I integrate STACKLY with my existing accounting software? <i
+                            class="fa-solid fa-chevron-down transition"></i>
+                    </div>
+                    <div class="accordion-content">
+                        Absolutely. We have native, two-way sync integrations with QuickBooks, Xero, NetSuite, and Sage.
+                        We also offer a robust Open API for custom integrations.
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Is my data secure? <i class="fa-solid fa-chevron-down transition"></i>
+                    </div>
+                    <div class="accordion-content">
+                        Security is our top priority. STACKLY is SOC 2 Type II compliant, uses bank-level 256-bit
+                        encryption, and requires MFA for all administrative access.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Global Offices (Interactive Map Area) -->
+    <section class="section map-bg text-center" style="padding: 6rem 0;">
+        <div class="container">
+            <h2 style="margin-bottom: 3rem;" data-aos="fade-up">Our Global Presence</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="glass-card hover-glow float-soft" style="padding: 2rem;" data-aos="fade-up">
+                    <h3 style="color: var(--primary);">New York</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Global Headquarters
+                    </p>
+                    <p style="font-size: 0.875rem;">123 Financial District<br>New York, NY 10004</p>
+                </div>
+                <div class="glass-card hover-glow float-soft" style="padding: 2rem; animation-delay: 1s;"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="color: var(--primary);">London</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">EMEA Operations</p>
+                    <p style="font-size: 0.875rem;">One Canada Square<br>Canary Wharf, London</p>
+                </div>
+                <div class="glass-card hover-glow float-soft" style="padding: 2rem; animation-delay: 2s;"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <h3 style="color: var(--primary);">Singapore</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">APAC Hub</p>
+                    <p style="font-size: 0.875rem;">Marina Bay Financial Centre<br>Tower 3, Singapore</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support SLAs & Live Chat -->
+    <section class="section bg-color">
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div data-aos="fade-right">
+                    <h2>Unmatched Support SLAs</h2>
+                    <p style="margin-bottom: 2rem;">We pride ourselves on lightning-fast responses.</p>
+
+                    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div class="glass-card hover-glow" style="padding: 1.5rem; text-align: center;">
+                            <h3 style="font-size: 2.5rem; color: var(--accent);"><span class="counter"
+                                    data-target="2">0</span> Min</h3>
+                            <p style="color: var(--text-muted); font-size: 0.875rem;">Avg Response Time</p>
+                        </div>
+                        <div class="glass-card hover-glow" style="padding: 1.5rem; text-align: center;">
+                            <h3 style="font-size: 2.5rem; color: var(--accent);"><span class="counter"
+                                    data-target="99">0</span>%</h3>
+                            <p style="color: var(--text-muted); font-size: 0.875rem;">CSAT Score</p>
+                        </div>
+                        <div class="glass-card hover-glow" style="padding: 1.5rem; text-align: center;">
+                            <h3 style="font-size: 2.5rem; color: var(--accent);">24/7</h3>
+                            <p style="color: var(--text-muted); font-size: 0.875rem;">Support Availability</p>
+                        </div>
+                        <div class="glass-card hover-glow" style="padding: 1.5rem; text-align: center;">
+                            <h3 style="font-size: 2.5rem; color: var(--accent);"><span class="counter"
+                                    data-target="50">0</span>+</h3>
+                            <p style="color: var(--text-muted); font-size: 0.875rem;">Dedicated Experts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card hover-glow"
+                    style="text-align: center; padding: 4rem 2rem; background: var(--primary); color: white;"
+                    data-aos="fade-left">
+                    <div style="font-size: 4rem; color: var(--accent); margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 style="color: white; margin-bottom: 1rem;">Need immediate help?</h3>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Our live chat is available directly
+                        within your dashboard for instant support.</p>
+                    <button class="btn btn-primary" style="background: var(--accent); color: var(--primary);">Start Live
+                        Chat</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Meet the Support Leads -->
+    <section class="section bg-neutral">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Meet the Support Leads</h2>
+                <p>The experts dedicated to ensuring your success.</p>
+            </div>
+            <div class="grid"
+                style="grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto;">
+                <div class="glass-card text-center hover-zoom" style="padding: 2rem;" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200&h=200"
+                        alt="Sarah"
+                        style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 4px solid var(--primary-light);">
+                    <h4>Sarah Jenkins</h4>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">VP of Customer
+                        Success</p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; color: var(--accent);">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="glass-card text-center hover-zoom" style="padding: 2rem;" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200&h=200"
+                        alt="David"
+                        style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 4px solid var(--primary-light);">
+                    <h4>David Chen</h4>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Head of
+                        Implementations</p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; color: var(--accent);">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="glass-card text-center hover-zoom" style="padding: 2rem;" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200"
+                        alt="Elena"
+                        style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 4px solid var(--primary-light);">
+                    <h4>Elena Rodriguez</h4>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Lead Payroll
+                        Specialist</p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; color: var(--accent);">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Enterprise Partnerships -->
+    <section class="section bg-primary text-neutral text-center">
+        <div class="container" data-aos="zoom-in">
+            <h2 style="color: white; margin-bottom: 1rem;">Looking for an Enterprise Partnership?</h2>
+            <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 2rem;">We offer white-label
+                solutions, volume discounts, and dedicated account management for agencies, accountants, and holding
+                companies.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem;">
+                <a href="404.html" class="btn btn-accent icon-pulse">Contact Enterprise Team</a>
+                <a href="404.html" class="btn btn-outline"
+                    style="border-color: rgba(255,255,255,0.3); color: white;">Download Partner Pitch Deck</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="footer-brand">
+                        <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 40px; width: auto;">
+                    </a>
+                    <p class="footer-desc">AI-driven next-generation payroll and HR platform protecting your
+                        organization's time and resources.</p>
+                    <div class="footer-socials">
+                        <a href="404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="payroll-solutions.html">Payroll Solutions</a></li>
+                        <li><a href="hr-management.html">HR Management</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="404.html">About Us</a></li>
+                        <li><a href="contact.html">Support</a></li>
+                        <li><a href="404.html">Privacy Policy</a></li>
+                        <li><a href="404.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fa-regular fa-envelope"></i> info@stackly.com</li>
+                        <li><i class="fa-solid fa-phone"></i> 9876543210</li>
+                        <li><i class="fa-solid fa-location-dot"></i> MMR Complex, Chinna Thirupathi, near Chinna
+                            Muniyappan Kovil, Salem, Tamil Nadu 636008</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Our Location</h4>
+                    <div class="footer-map">
+                        <iframe src="https://maps.google.com/maps?q=11.6829566,78.1739798&hl=en&z=17&output=embed"
+                            width="100%" height="150" style="border:0; border-radius: 8px; opacity: 0.8;"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 STACKLY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

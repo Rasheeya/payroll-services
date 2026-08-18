@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - STACKLY</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-brand">
+                    <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 40px; width: auto;">
+                </a>
+                <button class="mobile-toggle"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="sidebar-menu">
+                <!-- 1. Payroll Management -->
+                <div class="menu-group">
+                    <div class="menu-title">Payroll Management</div>
+                    <a href="#" onclick="switchView('view-overview', this); return false;" class="menu-link active">
+                        <span class="menu-icon"><i class="fa-solid fa-chart-pie"></i></span>
+                        Payroll Overview
+                    </a>
+                    <a href="#" onclick="switchView('view-payroll-history', this); return false;" class="menu-link">
+                        <span class="menu-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
+                        Payroll History
+                    </a>
+                    <a href="#" onclick="switchView('view-payroll-approval', this); return false;" class="menu-link">
+                        <span class="menu-icon"><i class="fa-solid fa-check-double"></i></span>
+                        Payroll Approval
+                    </a>
+                </div>
+
+                <!-- 2. Employee Management -->
+                <div class="menu-group">
+                    <div class="menu-title">Employee Management</div>
+                    <a href="#" onclick="switchView('view-employee-salary', this); return false;" class="menu-link">
+                        <span class="menu-icon"><i class="fa-solid fa-money-check-dollar"></i></span>
+                        Employee Salary
+                    </a>
+                </div>
+
+                <!-- 3. Attendance & Leave -->
+                <div class="menu-group">
+                    <div class="menu-title">Attendance & Leave</div>
+                    <a href="#" onclick="switchView('view-attendance', this); return false;" class="menu-link">
+                        <span class="menu-icon"><i class="fa-solid fa-clipboard-user"></i></span>
+                        Attendance
+                    </a>
+                    <a href="#" onclick="switchView('view-leave-requests', this); return false;" class="menu-link">
+                        <span class="menu-icon"><i class="fa-solid fa-calendar-plus"></i></span>
+                        Leave Requests
+                    </a>
+                </div>
+
+                <!-- 4. Reports & Analytics -->
+                <div class="menu-group">
+                    <div class="menu-title">Reports & Analytics</div>
+                    <a href="#" onclick="switchView('view-salary-reports', this); return false;" class="menu-link">
+                        <span class="menu-icon"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                        Salary Reports
+                    </a>
+                </div>
+                <div class="menu-group">
+                    <a href="index.html" class="menu-link">
+                        <span class="menu-icon"><i class="fa-solid fa-power-off"></i></span>
+                        Logout
+                    </a>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Main Area -->
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+                <div class="welcome-section">
+                    <h2>Admin Dashboard</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Company payroll summary and metrics.</p>
+                </div>
+
+                <div class="header-actions" style="display: flex; align-items: center; gap: 1.5rem;">
+                    <button class="dashboard-mobile-toggle btn btn-outline" style="padding: 0.5rem; display: none;"><i
+                            class="fa-solid fa-bars"></i></button>
+                    <a href="index.html" class="mobile-logo" style="display: none; margin-right: auto;">
+                        <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 32px; width: auto;">
+                    </a>
+                    <div class="notification-bell">
+                        <i class="fa-solid fa-bell"></i>
+                        <div class="notification-dot"></div>
+                    </div>
+                    <div class="user-profile" style="color: var(--primary);">
+                        <div class="user-avatar" id="profile-avatar"
+                            style="background: var(--primary); color: var(--neutral);">S</div>
+                        <div class="user-info">
+                            <h5 style="margin-bottom: 0;" id="profile-name">Sarah Connor</h5>
+                            <p style="margin-bottom: 0; color: var(--text-muted); font-size: 0.75rem;"
+                                id="profile-email">HR Admin</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div id='view-overview' class='spa-view active' style='animation: fadeIn 0.4s ease;'>
+                <div style="margin-bottom: 2rem;">
+                    <h2>Payroll Overview</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Welcome back! Here's a summary of your
+                        operations.</p>
+                </div>
+
+                <!-- KPIs -->
+                <div class="kpi-grid">
+                    <div class="kpi-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="kpi-details">
+                            <h4>Total Employees</h4>
+                            <div class="kpi-value">142</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+                    </div>
+                    <div class="kpi-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="kpi-details">
+                            <h4>Payroll Cost</h4>
+                            <div class="kpi-value">?24.5L</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                    </div>
+                    <div class="kpi-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="kpi-details">
+                            <h4>Pending Leaves</h4>
+                            <div class="kpi-value">18</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-calendar-plus"></i></div>
+                    </div>
+                    <div class="kpi-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="kpi-details">
+                            <h4>Avg Attendance</h4>
+                            <div class="kpi-value text-accent">94%</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-user-check"></i></div>
+                    </div>
+                </div>
+
+                <div class="dash-grid-2" style="margin-bottom: 2.5rem;">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;" data-aos="fade-right"
+                        data-aos-delay="200">
+                        <div class="dash-panel">
+                            <div class="panel-header">
+                                <h3 class="panel-title">Payroll Cost Trend</h3>
+                            </div>
+                            <div style="height: 300px; width: 100%; position: relative;">
+                                <canvas id="payrollBarChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="dash-panel">
+                            <div class="panel-header">
+                                <h3 class="panel-title">Pending Approvals</h3>
+                                <a href="404.html"
+                                    style="font-size: 0.875rem; color: var(--accent); text-decoration: none;">View
+                                    All</a>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-color); border-radius: 8px; border: 1px solid rgba(24, 43, 73, 0.05);">
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <div
+                                            style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+                                            <i class="fa-solid fa-plane-departure"></i></div>
+                                        <div>
+                                            <h5 style="margin: 0; font-size: 0.875rem;">John Smith</h5>
+                                            <span style="font-size: 0.75rem; color: var(--text-muted);">Annual Leave (3
+                                                Days)</span>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="btn hover-glow"
+                                            style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer;"><i
+                                                class="fa-solid fa-check"></i></button>
+                                        <button class="btn hover-glow"
+                                            style="padding: 0.4rem 0.8rem; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border: none; border-radius: 6px; cursor: pointer;"><i
+                                                class="fa-solid fa-xmark"></i></button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-color); border-radius: 8px; border: 1px solid rgba(24, 43, 73, 0.05);">
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <div
+                                            style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+                                            <i class="fa-solid fa-file-invoice-dollar"></i></div>
+                                        <div>
+                                            <h5 style="margin: 0; font-size: 0.875rem;">Sarah Connor</h5>
+                                            <span style="font-size: 0.75rem; color: var(--text-muted);">Expense Claim
+                                                ($120)</span>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="btn hover-glow"
+                                            style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer;"><i
+                                                class="fa-solid fa-check"></i></button>
+                                        <button class="btn hover-glow"
+                                            style="padding: 0.4rem 0.8rem; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border: none; border-radius: 6px; cursor: pointer;"><i
+                                                class="fa-solid fa-xmark"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions & Status -->
+                    <div data-aos="fade-left" data-aos-delay="300">
+                        <div class="dash-panel" style="margin-bottom: 1.5rem;">
+                            <h3 class="panel-title" style="margin-bottom: 1.5rem;">Quick Actions</h3>
+                            <div class="quick-actions-grid">
+                                <a href="404.html" class="action-btn">
+                                    <i class="fa-solid fa-play"></i>
+                                    <span>Run Payroll</span>
+                                </a>
+                                <a href="404.html" class="action-btn">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    <span>Add Employee</span>
+                                </a>
+                                <a href="404.html" class="action-btn">
+                                    <i class="fa-solid fa-file-export"></i>
+                                    <span>Report</span>
+                                </a>
+                                <a href="404.html" class="action-btn">
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                    <span>Notify</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="dash-panel">
+                            <h3 class="panel-title" style="margin-bottom: 1.5rem;">Payroll Status</h3>
+
+                            <div style="margin-bottom: 1rem;">
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem;">
+                                    <span>Processed</span> <span class="text-accent">82%</span>
+                                </div>
+                                <div
+                                    style="height: 8px; background: var(--primary-light); border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 82%; height: 100%; background: var(--accent);"></div>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 1rem;">
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem;">
+                                    <span>Pending</span> <span>12%</span>
+                                </div>
+                                <div
+                                    style="height: 8px; background: var(--primary-light); border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 12%; height: 100%; background: #F39C12;"></div>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 1rem;">
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem;">
+                                    <span>Failed</span> <span style="color: #E74C3C;">3%</span>
+                                </div>
+                                <div
+                                    style="height: 8px; background: var(--primary-light); border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 3%; height: 100%; background: #E74C3C;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem;">
+                                    <span>Draft</span> <span style="color: var(--text-muted);">3%</span>
+                                </div>
+                                <div
+                                    style="height: 8px; background: var(--primary-light); border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 3%; height: 100%; background: var(--text-muted);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Task Progress & Alerts -->
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-8">
+                        <div class="glass-card" style="padding: 1.5rem;" data-aos="fade-up">
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;"><i
+                                    class="fa-solid fa-list-check"></i>
+                                Ongoing Tasks</h4>
+                            <div class="progress-wrap">
+                                <div class="prog-header"><span>End of Month Payroll Run</span> <span>80%</span></div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="80%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrap">
+                                <div class="prog-header"><span>Q3 Tax Filings</span> <span>45%</span></div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="45%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrap">
+                                <div class="prog-header"><span>Employee Performance Reviews</span> <span>90%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="glass-card" style="padding: 1.5rem; background: var(--primary-light);"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fa-solid fa-bell"></i>
+                                System
+                                Alerts</h4>
+                            <div
+                                style="background: white; border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; border-left: 4px solid var(--accent);">
+                                <strong>Warning:</strong> Missing tax info for 3 new hires.
+                            </div>
+                            <div
+                                style="background: white; border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; border-left: 4px solid #f39c12;">
+                                <strong>Notice:</strong> Scheduled maintenance this Sunday.
+                            </div>
+                            <div
+                                style="background: white; border-radius: 8px; padding: 1rem; border-left: 4px solid #2ecc71;">
+                                <strong>Success:</strong> Xero integration sync completed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Timeline -->
+                <div class="glass-card mb-4" style="padding: 2rem; margin-bottom: 2.5rem;" data-aos="fade-up">
+                    <h4 style="color: var(--primary); margin-bottom: 1.5rem;">Recent Admin Activity</h4>
+                    <div style="position: relative; padding-left: 1rem; border-left: 2px solid var(--primary-light);">
+                        <div style="margin-bottom: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: -1.4rem; top: 0.2rem; color: var(--accent);"><i
+                                    class="fa-solid fa-circle"></i></span>
+                            <strong>Sarah Connor</strong> updated tax brackets for Q3. <br><span
+                                style="font-size: 0.8rem; color: var(--text-muted);">2 hours ago</span>
+                        </div>
+                        <div style="margin-bottom: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: -1.4rem; top: 0.2rem; color: var(--accent);"><i
+                                    class="fa-solid fa-circle"></i></span>
+                            <strong>John Smith</strong> approved leave for Marketing Team. <br><span
+                                style="font-size: 0.8rem; color: var(--text-muted);">4 hours ago</span>
+                        </div>
+                        <div style="position: relative;">
+                            <span style="position: absolute; left: -1.4rem; top: 0.2rem; color: var(--accent);"><i
+                                    class="fa-solid fa-circle"></i></span>
+                            <strong>System</strong> completed automated payroll backup. <br><span
+                                style="font-size: 0.8rem; color: var(--text-muted);">1 day ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Row -->
+                <div class="dash-grid-2">
+
+                    <!-- Dynamic Email / Notifications -->
+                    <div class="dash-panel" data-aos="fade-right">
+                        <div class="panel-header">
+                            <h3 class="panel-title">System Notifications</h3>
+                        </div>
+
+                        <div class="email-list" id="dynamic-email-list" data-type="admin">
+                            <!-- Content generated by email-data.js -->
+                            <div style="padding: 2rem; text-align: center; color: var(--text-muted);">
+                                <i class="fa-solid fa-spinner fa-spin"></i> Loading...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Department Salary Chart -->
+                    <div class="dash-panel" data-aos="fade-left" data-aos-delay="100">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Department Distribution</h3>
+                        </div>
+
+                        <div
+                            style="display: flex; align-items: flex-end; gap: 1rem; height: 200px; padding-bottom: 1rem; border-bottom: 1px solid var(--primary-light); margin-bottom: 1.5rem;">
+                            <div
+                                style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%;">
+                                <div
+                                    style="width: 100%; background: var(--primary); border-radius: 4px 4px 0 0; height: 45%;">
+                                </div>
+                            </div>
+                            <div
+                                style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%;">
+                                <div
+                                    style="width: 100%; background: var(--accent); border-radius: 4px 4px 0 0; height: 30%;">
+                                </div>
+                            </div>
+                            <div
+                                style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%;">
+                                <div style="width: 100%; background: #3498DB; border-radius: 4px 4px 0 0; height: 15%;">
+                                </div>
+                            </div>
+                            <div
+                                style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%;">
+                                <div style="width: 100%; background: #9B59B6; border-radius: 4px 4px 0 0; height: 10%;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="custom-grid-2-col">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; background: var(--primary); border-radius: 2px;">
+                                </div>
+                                Engineering
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; background: var(--accent); border-radius: 2px;">
+                                </div>
+                                Sales
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; background: #3498DB; border-radius: 2px;"></div>
+                                Marketing
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; background: #9B59B6; border-radius: 2px;"></div>
+                                HR & Admin
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id='view-payroll-history' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+                <div style="margin-bottom: 2rem;">
+                    <h2>Payroll History</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Historical payroll records and payouts.
+                    </p>
+                </div>
+                <div class="dash-grid-2" style="margin-top: 2rem;">
+                    <div class="dash-panel" data-aos="fade-up">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Payroll History Trends</h3>
+                            <button class="btn btn-outline"
+                                style="padding: 0.5rem 1rem; border: 1px solid var(--primary-light); background: transparent; border-radius: 6px;"><i
+                                    class="fa-solid fa-download"></i> Export</button>
+                        </div>
+                        <div style="height: 350px; width: 100%; position: relative;">
+                            <canvas id="payrollHistoryChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="kpi-card" data-aos="fade-left" style="width: 100%;">
+                            <div class="kpi-details">
+                                <h4>YTD Payout</h4>
+                                <div class="kpi-value">.8Cr</div>
+                            </div>
+                            <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        </div>
+                        <div class="kpi-card" data-aos="fade-left" data-aos-delay="100" style="width: 100%;">
+                            <div class="kpi-details">
+                                <h4>Avg Monthly Cost</h4>
+                                <div class="kpi-value">.5L</div>
+                            </div>
+                            <div class="kpi-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payroll Approval View -->
+
+    </div>
+    <div id='view-payroll-approval' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+            <div>
+                <h2>Pending Approvals</h2>
+                <p style="color: var(--text-muted); font-size: 0.875rem;">Review and approve pending payroll batches for
+                    this month.</p>
+            </div>
+            <button class="btn btn-primary"><i class="fa-solid fa-check-double"></i> Approve All</button>
+        </div>
+
+        <div class="kpi-grid" style="margin-bottom: 2rem;">
+            <div class="kpi-card"
+                style="background: rgba(46, 204, 113, 0.05); border: 1px solid rgba(46, 204, 113, 0.2);">
+                <div class="kpi-details">
+                    <h4 style="color: #2ecc71;">Total Pending Amount</h4>
+                    <div class="kpi-value" style="color: #2ecc71;">&#8377;24.5L</div>
+                </div>
+                <div class="kpi-icon" style="color: #2ecc71; background: rgba(46, 204, 113, 0.1);"><i
+                        class="fa-solid fa-money-bill-wave"></i></div>
+            </div>
+            <div class="kpi-card"
+                style="background: rgba(243, 156, 18, 0.05); border: 1px solid rgba(243, 156, 18, 0.2);">
+                <div class="kpi-details">
+                    <h4 style="color: #f39c12;">Employees to Pay</h4>
+                    <div class="kpi-value" style="color: #f39c12;">117</div>
+                </div>
+                <div class="kpi-icon" style="color: #f39c12; background: rgba(243, 156, 18, 0.1);"><i
+                        class="fa-solid fa-users-clock"></i></div>
+            </div>
+        </div>
+
+        <div class="dash-panel" data-aos="fade-up">
+            <div class="table-responsive">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--primary-light); color: var(--text-muted);">
+                            <th style="padding: 1rem;">Batch ID / Dept</th>
+                            <th style="padding: 1rem;">Period</th>
+                            <th style="padding: 1rem;">Employees</th>
+                            <th style="padding: 1rem;">Total Amount</th>
+                            <th style="padding: 1rem;">Status</th>
+                            <th style="padding: 1rem; text-align: right;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--primary-light);">
+                            <td style="padding: 1rem;">
+                                <strong>PRL-ENG-0826</strong><br>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Engineering</span>
+                            </td>
+                            <td style="padding: 1rem;">Aug 2026</td>
+                            <td style="padding: 1rem;">42</td>
+                            <td style="padding: 1rem; font-weight: 600;">&#8377;12.5L</td>
+                            <td style="padding: 1rem;"><span
+                                    style="background: rgba(243, 156, 18, 0.1); color: #f39c12; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;"><i
+                                        class="fa-solid fa-circle-pause"></i> Pending</span></td>
+                            <td style="padding: 1rem; text-align: right;">
+                                <button class="btn hover-glow"
+                                    style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer; margin-right: 0.5rem;">Approve</button>
+                                <button class="btn btn-outline"
+                                    style="padding: 0.4rem 0.8rem; font-size: 0.875rem;">Review</button>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--primary-light);">
+                            <td style="padding: 1rem;">
+                                <strong>PRL-SAL-0826</strong><br>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Sales</span>
+                            </td>
+                            <td style="padding: 1rem;">Aug 2026</td>
+                            <td style="padding: 1rem;">35</td>
+                            <td style="padding: 1rem; font-weight: 600;">&#8377;8.2L</td>
+                            <td style="padding: 1rem;"><span
+                                    style="background: rgba(243, 156, 18, 0.1); color: #f39c12; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;"><i
+                                        class="fa-solid fa-circle-pause"></i> Pending</span></td>
+                            <td style="padding: 1rem; text-align: right;">
+                                <button class="btn hover-glow"
+                                    style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer; margin-right: 0.5rem;">Approve</button>
+                                <button class="btn btn-outline"
+                                    style="padding: 0.4rem 0.8rem; font-size: 0.875rem;">Review</button>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--primary-light);">
+                            <td style="padding: 1rem;">
+                                <strong>PRL-MKT-0826</strong><br>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Marketing</span>
+                            </td>
+                            <td style="padding: 1rem;">Aug 2026</td>
+                            <td style="padding: 1rem;">28</td>
+                            <td style="padding: 1rem; font-weight: 600;">&#8377;5.1L</td>
+                            <td style="padding: 1rem;"><span
+                                    style="background: rgba(243, 156, 18, 0.1); color: #f39c12; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;"><i
+                                        class="fa-solid fa-circle-pause"></i> Pending</span></td>
+                            <td style="padding: 1rem; text-align: right;">
+                                <button class="btn hover-glow"
+                                    style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer; margin-right: 0.5rem;">Approve</button>
+                                <button class="btn btn-outline"
+                                    style="padding: 0.4rem 0.8rem; font-size: 0.875rem;">Review</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem;">
+                                <strong>PRL-HRA-0826</strong><br>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">HR & Admin</span>
+                            </td>
+                            <td style="padding: 1rem;">Aug 2026</td>
+                            <td style="padding: 1rem;">12</td>
+                            <td style="padding: 1rem; font-weight: 600;">&#8377;4.0L</td>
+                            <td style="padding: 1rem;"><span
+                                    style="background: rgba(46, 204, 113, 0.1); color: #2ecc71; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;"><i
+                                        class="fa-solid fa-check"></i> Approved</span></td>
+                            <td style="padding: 1rem; text-align: right;">
+                                <span style="color: var(--text-muted); font-size: 0.875rem;">Processed</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employee Salary View -->
+
+    <div id='view-employee-salary' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+            <div>
+                <h2>Employee Salary</h2>
+                <p style="color: var(--text-muted); font-size: 0.875rem;">Manage employee salary structures and recent
+                    raises.</p>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <div style="position: relative;">
+                    <i class="fa-solid fa-search"
+                        style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    <input type="text" placeholder="Search employee..."
+                        style="padding: 0.5rem 1rem 0.5rem 2.5rem; border: 1px solid var(--primary-light); border-radius: 8px; font-family: 'Inter', sans-serif; background: transparent;">
+                </div>
+                <button class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Add Employee</button>
+            </div>
+        </div>
+
+        <div class="dash-panel" data-aos="fade-up">
+            <div class="table-responsive">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--primary-light); color: var(--text-muted);">
+                            <th style="padding: 1rem;">Employee</th>
+                            <th style="padding: 1rem;">Role</th>
+                            <th style="padding: 1rem;">Department</th>
+                            <th style="padding: 1rem;">Base Salary (Annual)</th>
+                            <th style="padding: 1rem;">Last Raise</th>
+                            <th style="padding: 1rem; text-align: right;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--primary-light);">
+                            <td style="padding: 1rem; display: flex; align-items: center; gap: 1rem;">
+                                <div
+                                    style="width: 32px; height: 32px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;">
+                                    JD</div>
+                                <strong>John Doe</strong>
+                            </td>
+                            <td style="padding: 1rem; color: var(--text-muted);">Senior Developer</td>
+                            <td style="padding: 1rem;"><span
+                                    style="background: rgba(24, 169, 153, 0.1); color: var(--accent); padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Engineering</span>
+                            </td>
+                            <td style="padding: 1rem; font-weight: 600;">&#8377;18.0L</td>
+                            <td style="padding: 1rem; color: var(--text-muted);">Jan 2026</td>
+                            <td style="padding: 1rem; text-align: right;">
+                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.875rem;"><i
+                                        class="fa-solid fa-pen"></i> Edit</button>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--primary-light);">
+                            <td style="padding: 1rem; display: flex; align-items: center; gap: 1rem;">
+                                <div
+                                    style="width: 32px; height: 32px; background: #3498DB; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;">
+                                    AS</div>
+                                <strong>Alice Smith</strong>
+                            </td>
+                            <td style="padding: 1rem; color: var(--text-muted);">Sales Executive</td>
+                            <td style="padding: 1rem;"><span
+                                    style="background: rgba(52, 152, 219, 0.1); color: #3498DB; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Sales</span>
+                            </td>
+                            <td style="padding: 1rem; font-weight: 600;">&#8377;12.5L</td>
+                            <td style="padding: 1rem; color: var(--text-muted);">Mar 2026</td>
+                            <td style="padding: 1rem; text-align: right;">
+                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.875rem;"><i
+                                        class="fa-solid fa-pen"></i> Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; display: flex; align-items: center; gap: 1rem;">
+                                <div
+                                    style="width: 32px; height: 32px; background: #9B59B6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;">
+                                    RJ</div>
+                                <strong>Robert Jones</strong>
+                            </td>
+                            <td style="padding: 1rem; color: var(--text-muted);">Marketing Lead</td>
+                            <td style="padding: 1rem;"><span
+                                    style="background: rgba(155, 89, 182, 0.1); color: #9B59B6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Marketing</span>
+                            </td>
+                            <td style="padding: 1rem; font-weight: 600;">&#8377;14.2L</td>
+                            <td style="padding: 1rem; color: var(--text-muted);">Jan 2025</td>
+                            <td style="padding: 1rem; text-align: right;">
+                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.875rem;"><i
+                                        class="fa-solid fa-pen"></i> Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attendance View -->
+
+    <div id='view-attendance' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+            <div>
+                <h2>Today's Attendance</h2>
+                <p style="color: var(--text-muted); font-size: 0.875rem;">Review company-wide attendance and exceptions.
+                </p>
+            </div>
+            <button class="btn btn-outline"><i class="fa-solid fa-download"></i> Export Report</button>
+        </div>
+
+        <div class="dash-grid-2">
+            <div class="dash-panel" data-aos="fade-right">
+                <h3 class="panel-title" style="margin-bottom: 1.5rem;">Attendance Overview</h3>
+                <div style="height: 300px; width: 100%; position: relative;">
+                    <!-- The initSPACharts will automatically render doughnut chart here based on ID -->
+                    <canvas id="attendanceDoughnut"></canvas>
+                </div>
+            </div>
+
+            <div class="dash-panel" data-aos="fade-left">
+                <h3 class="panel-title" style="margin-bottom: 1.5rem;">Today's Exceptions</h3>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Exception 1 -->
+                    <div class="hover-glow"
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-color); border-radius: 8px; border: 1px solid rgba(24, 43, 73, 0.05);">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; border-radius: 50%; background: rgba(243, 156, 18, 0.1); color: #f39c12; display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h5 style="margin: 0; font-size: 0.875rem;">Mike Johnson</h5>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Engineering • Late by
+                                    45m</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline"
+                            style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Message</button>
+                    </div>
+
+                    <!-- Exception 2 -->
+                    <div class="hover-glow"
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-color); border-radius: 8px; border: 1px solid rgba(24, 43, 73, 0.05);">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; border-radius: 50%; background: rgba(231, 76, 60, 0.1); color: #E74C3C; display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-user-xmark"></i></div>
+                            <div>
+                                <h5 style="margin: 0; font-size: 0.875rem;">Emily Davis</h5>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Sales • Unplanned
+                                    Absence</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline"
+                            style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Message</button>
+                    </div>
+
+                    <!-- Exception 3 -->
+                    <div class="hover-glow"
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-color); border-radius: 8px; border: 1px solid rgba(24, 43, 73, 0.05);">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; border-radius: 50%; background: rgba(243, 156, 18, 0.1); color: #f39c12; display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h5 style="margin: 0; font-size: 0.875rem;">Chris Lee</h5>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Marketing • Late by
+                                    20m</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline"
+                            style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leave Requests View -->
+
+    </div>
+    <div id='view-leave-requests' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+            <div>
+                <h2>Leave Applications</h2>
+                <p style="color: var(--text-muted); font-size: 0.875rem;">Review and approve pending time-off requests.
+                </p>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-outline"><i class="fa-solid fa-filter"></i> Filter</button>
+                <button class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> View Calendar</button>
+            </div>
+        </div>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+            <!-- Request 1 -->
+            <div class="dash-panel hover-glow" data-aos="fade-up" style="display: flex; flex-direction: column;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                            SC</div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">Sarah Connor</h4>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Engineering</span>
+                        </div>
+                    </div>
+                    <span
+                        style="background: rgba(52, 152, 219, 0.1); color: #3498DB; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Annual
+                        Leave</span>
+                </div>
+
+                <div style="margin-bottom: 1.5rem; font-size: 0.875rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span style="color: var(--text-muted);">Duration</span>
+                        <strong>3 Days</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span style="color: var(--text-muted);">Dates</span>
+                        <strong>20 Aug - 22 Aug</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-muted);">Reason</span>
+                        <span
+                            style="text-align: right; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Family
+                            Vacation</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: auto;">
+                    <button class="btn"
+                        style="flex: 1; padding: 0.5rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.2);"><i
+                            class="fa-solid fa-check"></i> Approve</button>
+                    <button class="btn"
+                        style="flex: 1; padding: 0.5rem; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border: 1px solid rgba(231, 76, 60, 0.2);"><i
+                            class="fa-solid fa-xmark"></i> Reject</button>
+                </div>
+            </div>
+
+            <!-- Request 2 -->
+            <div class="dash-panel hover-glow" data-aos="fade-up" data-aos-delay="100"
+                style="display: flex; flex-direction: column;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                            MS</div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">Michael Scott</h4>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Sales</span>
+                        </div>
+                    </div>
+                    <span
+                        style="background: rgba(231, 76, 60, 0.1); color: #E74C3C; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Sick
+                        Leave</span>
+                </div>
+
+                <div style="margin-bottom: 1.5rem; font-size: 0.875rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span style="color: var(--text-muted);">Duration</span>
+                        <strong>1 Day</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span style="color: var(--text-muted);">Dates</span>
+                        <strong>18 Aug</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-muted);">Reason</span>
+                        <span
+                            style="text-align: right; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Flu</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: auto;">
+                    <button class="btn"
+                        style="flex: 1; padding: 0.5rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.2);"><i
+                            class="fa-solid fa-check"></i> Approve</button>
+                    <button class="btn"
+                        style="flex: 1; padding: 0.5rem; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border: 1px solid rgba(231, 76, 60, 0.2);"><i
+                            class="fa-solid fa-xmark"></i> Reject</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salary Reports View -->
+
+    </div>
+    <div id='view-salary-reports' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+            <div>
+                <h2>Salary Reports</h2>
+                <p style="color: var(--text-muted); font-size: 0.875rem;">Analyze base salary vs allowances across
+                    departments.</p>
+            </div>
+            <button class="btn btn-primary"><i class="fa-solid fa-download"></i> Export PDF</button>
+        </div>
+
+        <div class="dash-panel" data-aos="fade-up" style="margin-bottom: 2rem;">
+            <h3 class="panel-title" style="margin-bottom: 1.5rem;">Compensation Breakdown</h3>
+            <div style="height: 400px; width: 100%; position: relative;">
+                <!-- The initSPACharts will automatically render the bar chart here based on ID -->
+                <canvas id="salaryReportChart"></canvas>
+            </div>
+        </div>
+
+        <div class="dash-panel" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="panel-title" style="margin-bottom: 1.5rem;">Data Table</h3>
+            <div class="table-responsive">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--primary-light); color: var(--text-muted);">
+                            <th style="padding: 1rem;">Department</th>
+                            <th style="padding: 1rem;">Base Salary Total</th>
+                            <th style="padding: 1rem;">Allowances Total</th>
+                            <th style="padding: 1rem;">Avg per Employee</th>
+                            <th style="padding: 1rem; text-align: right;">Total Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--primary-light);">
+                            <td style="padding: 1rem; font-weight: 500;">Engineering</td>
+                            <td style="padding: 1rem;">&#8377;9.5L</td>
+                            <td style="padding: 1rem;">&#8377;3.0L</td>
+                            <td style="padding: 1rem;">&#8377;29,761</td>
+                            <td style="padding: 1rem; text-align: right; font-weight: 600;">&#8377;12.5L</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--primary-light);">
+                            <td style="padding: 1rem; font-weight: 500;">Sales</td>
+                            <td style="padding: 1rem;">&#8377;6.2L</td>
+                            <td style="padding: 1rem;">&#8377;2.0L</td>
+                            <td style="padding: 1rem;">&#8377;23,428</td>
+                            <td style="padding: 1rem; text-align: right; font-weight: 600;">&#8377;8.2L</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--primary-light);">
+                            <td style="padding: 1rem; font-weight: 500;">Marketing</td>
+                            <td style="padding: 1rem;">&#8377;4.1L</td>
+                            <td style="padding: 1rem;">&#8377;1.0L</td>
+                            <td style="padding: 1rem;">&#8377;18,214</td>
+                            <td style="padding: 1rem; text-align: right; font-weight: 600;">&#8377;5.1L</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; font-weight: 500;">HR & Admin</td>
+                            <td style="padding: 1rem;">&#8377;3.2L</td>
+                            <td style="padding: 1rem;">&#8377;0.8L</td>
+                            <td style="padding: 1rem;">&#8377;33,333</td>
+                            <td style="padding: 1rem; text-align: right; font-weight: 600;">&#8377;4.0L</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('payrollBarChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                    datasets: [{
+                        label: 'Payroll Cost (in L)',
+                        data: [40, 42, 45, 50, 48, 52, 55, 60],
+                        backgroundColor: '#18A999',
+                        borderRadius: 4,
+                        barThickness: 24
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(24, 43, 73, 0.05)' },
+                            border: { display: false }
+                        },
+                        x: {
+                            grid: { display: false },
+                            border: { display: false }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        // SPA Navigation Logic
+        function switchView(viewId, element) {
+            // ALWAYS close sidebar immediately on click
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.remove('active');
+            }
+
+            // Show target view
+            const targetView = document.getElementById(viewId);
+            if (!targetView) {
+                return;
+            }
+
+            // Hide all views only if target exists
+            document.querySelectorAll('.spa-view').forEach(el => el.style.display = 'none');
+            targetView.style.display = 'block';
+            window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
+
+            // Update sidebar active state
+            document.querySelectorAll('.menu-link').forEach(el => el.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            }
+
+            // Re-initialize Charts if needed
+            initSPACharts(viewId);
+
+            // Re-trigger AOS animations
+            if (typeof AOS !== 'undefined') {
+                AOS.refreshHard();
+            }
+        }
+
+        function initSPACharts(viewId) {
+            if (viewId === 'view-payroll-history' && !window.historyChartInit) {
+                const ctx = document.getElementById('payrollHistoryChart');
+                if (ctx) {
+                    new Chart(ctx.getContext('2d'), {
+                        type: 'line',
+                        data: {
+                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                            datasets: [{ label: 'Total Cost', data: [21.5, 22.0, 22.5, 23.0, 23.8, 24.1, 24.5], borderColor: '#18A999', tension: 0.4, fill: true, backgroundColor: 'rgba(24, 169, 153, 0.1)' }]
+                        },
+                        options: { responsive: true, maintainAspectRatio: false }
+                    });
+                    window.historyChartInit = true;
+                }
+            }
+
+            if (viewId === 'view-attendance' && !window.attendanceChartInit) {
+                const ctx = document.getElementById('attendanceDoughnut');
+                if (ctx) {
+                    new Chart(ctx.getContext('2d'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['On Time', 'Late', 'On Leave'],
+                            datasets: [{ data: [134, 3, 5], backgroundColor: ['#2ecc71', '#f39c12', '#9B59B6'], borderWidth: 0 }]
+                        },
+                        options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
+                    });
+                    window.attendanceChartInit = true;
+                }
+            }
+
+            if (viewId === 'view-salary-reports' && !window.salaryChartInit) {
+                const ctx = document.getElementById('salaryReportChart');
+                if (ctx) {
+                    new Chart(ctx.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: ['Engineering', 'Sales', 'Marketing', 'HR'],
+                            datasets: [
+                                { label: 'Base', data: [12.5, 8.2, 5.1, 4.0], backgroundColor: '#182B49' },
+                                { label: 'Allowances', data: [3.2, 2.1, 1.5, 1.2], backgroundColor: '#18A999' }
+                            ]
+                        },
+                        options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true } } }
+                    });
+                    window.salaryChartInit = true;
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - STACKLY</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <div class="auth-layout">
+        <!-- Visual Side -->
+        <div class="auth-visual">
+            <div class="auth-visual-content">
+                <i class="fa-solid fa-users-gear"
+                    style="font-size: 4rem; color: var(--accent); margin-bottom: 2rem;"></i>
+                <h2>Transform Your Payroll</h2>
+                <p>Join modern organizations that have eliminated payroll errors and saved hours of manual
+                    administrative work.</p>
+            </div>
+
+            <div
+                style="position: absolute; bottom: 10%; left: 10%; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; gap: 1rem; z-index: 2;">
+                <div
+                    style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white;">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div style="text-align: left;">
+                    <div style="font-size: 0.875rem; color: rgba(255,255,255,0.7);">Setup Time</div>
+                    <div style="font-weight: 600;">Under 5 Minutes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="auth-form-container">
+            <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+            <div class="auth-form-header">
+                <h3>Create Account</h3>
+                <p>Start your free 14-day trial. No credit card required.</p>
+            </div>
+
+            <form class="validate-form" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" class="form-control" required placeholder="John Doe">
+                        <div class="error-message">This field is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" class="form-control" required placeholder="Acme Inc">
+                        <div class="error-message">This field is required</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" class="form-control" required placeholder="name@company.com">
+                        <div class="error-message">Please enter a valid email</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" class="form-control" required placeholder="+1 (555) 000-0000">
+                        <div class="error-message">Please enter a valid phone number</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="employees">Employee Count</label>
+                    <select id="employees" class="form-control" required>
+                        <option value="">Select...</option>
+                        <option value="1-50">1 - 50</option>
+                        <option value="51-200">51 - 200</option>
+                        <option value="201-500">201 - 500</option>
+                        <option value="500+">500+</option>
+                    </select>
+                    <div class="error-message">Please select an option</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div style="position: relative;">
+                            <input type="password" id="password" class="form-control" required placeholder="Password"
+                                style="padding-right: 2.5rem;">
+                            <span class="toggle-password"
+                                style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--primary); opacity: 0.6; transition: 0.3s;">
+                                <i class="fa-regular fa-eye"></i>
+                            </span>
+                        </div>
+                        <div class="error-message">Password must be at least 8 characters</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div style="position: relative;">
+                            <input type="password" id="confirm-password" class="form-control" required
+                                placeholder="Password" style="padding-right: 2.5rem;">
+                            <span class="toggle-password"
+                                style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--primary); opacity: 0.6; transition: 0.3s;">
+                                <i class="fa-regular fa-eye"></i>
+                            </span>
+                        </div>
+                        <div class="error-message">Passwords do not match</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1rem;">Create
+                    Account</button>
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,265 @@
+/* ==========================================================================
+   UI Enhancements (Animations, Marquee, Timeline, Hover Effects)
+   ========================================================================== */
+
+/* Page Transitions */
+.page-transition {
+    animation: fadeIn 0.8s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover Glow & Lift Cards */
+.hover-glow {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-glow:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(24, 169, 153, 0.15), 0 5px 15px rgba(24, 43, 73, 0.1);
+}
+
+/* Integrations Marquee */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: var(--primary-light);
+    padding: 3rem 0;
+    position: relative;
+    display: flex;
+}
+.marquee-container::before, .marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+}
+.marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-color), transparent);
+}
+.marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-color), transparent);
+}
+.marquee-content {
+    display: flex;
+    gap: 4rem;
+    animation: marquee 30s linear infinite;
+    white-space: nowrap;
+    align-items: center;
+}
+.marquee-item {
+    font-size: 2rem;
+    color: var(--primary);
+    opacity: 0.5;
+    font-weight: 800;
+    transition: var(--transition);
+}
+.marquee-item:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: var(--primary-light);
+    top: 0;
+    bottom: auto;
+    height: var(--line-height, 100%);
+    left: 50%;
+    margin-left: -2px;
+}
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background: inherit;
+    width: 50%;
+}
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: var(--bg-color);
+    border: 4px solid var(--accent);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+.left { left: 0; }
+.right { left: 50%; }
+.right::after { left: -10px; }
+.timeline-content {
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+@media (max-width: 768px) {
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .timeline-item::after { left: 21px; right: auto; }
+    .right { left: 0%; }
+    .right::after { left: 21px; right: auto; }
+}
+
+/* Progress Bars */
+.progress-wrap {
+    margin-bottom: 1.5rem;
+}
+.progress-wrap .prog-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--primary-light);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 5px;
+    width: 0; /* Animated via JS */
+}
+
+/* Counter & Icon Cards */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: var(--primary-transparent);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+.card:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--accent);
+    color: white;
+}
+
+/* Accordion */
+.accordion-item {
+    border-bottom: 1px solid var(--primary-light);
+    padding: 1.5rem 0;
+}
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--primary);
+}
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    color: var(--text-muted);
+    margin-top: 0;
+}
+.accordion-item.active .accordion-content {
+    max-height: 500px;
+    margin-top: 1rem;
+}
+.accordion-item.active .accordion-header i {
+    transform: rotate(180deg);
+}
+
+/* Circular Progress */
+.circular-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+    max-height: 150px;
+}
+.circle-bg {
+    fill: none;
+    stroke: var(--primary-light);
+    stroke-width: 3.8;
+}
+.circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    stroke-dasharray: 0, 100;
+    transition: stroke-dasharray 1s ease-out;
+}
+.percentage {
+    fill: var(--primary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.5em;
+    text-anchor: middle;
+    font-weight: 700;
+}
+
+/* Image Hover Zoom */
+.hover-zoom {
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+}
+.hover-zoom img {
+    transition: transform 0.5s ease;
+}
+.hover-zoom:hover img {
+    transform: scale(1.05);
+}
+
+/* Icon Pulse Animation */
+@keyframes icon-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+}
+.icon-pulse {
+    animation: icon-pulse 2s infinite;
+}
+
+/* Floating Animation */
+@keyframes float-soft {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+.float-soft {
+    animation: float-soft 4s ease-in-out infinite;
+}
+
+/* Stylized Map Background */
+.map-bg {
+    background-image: radial-gradient(var(--primary-light) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: var(--neutral);
+    position: relative;
+}

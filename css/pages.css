@@ -1,0 +1,609 @@
+/* ==========================================================================
+   Home Page Specific Styles
+   ========================================================================== */
+
+/* 1. Hero Section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px; /* Accounts for navbar */
+  background: linear-gradient(135deg, var(--primary) 0%, #111e33 100%);
+  color: var(--neutral);
+  overflow: hidden;
+}
+
+.hero-bg-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--accent);
+  filter: blur(150px);
+  opacity: 0.15;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-glow 8s infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.25; }
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  margin-bottom: 1.5rem;
+  color: var(--neutral);
+}
+
+/* GSAP Split text style */
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Interactive Dashboard Visualization */
+.hero-visual {
+  position: relative;
+  height: 600px;
+  perspective: 1000px;
+}
+
+.hero-dashboard-mock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 80%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2rem;
+  transform: translate(-50%, -50%) rotateY(-10deg) rotateX(5deg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+}
+
+.mock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mock-stat {
+  margin-bottom: 2rem;
+}
+
+.mock-stat h4 {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.mock-stat .amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--neutral);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mock-stat .trend {
+  font-size: 1rem;
+  color: var(--accent);
+  background: rgba(24, 169, 153, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.mock-cards {
+  display: flex;
+  gap: 1rem;
+}
+
+.mock-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mock-card .mc-title {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.mock-card .mc-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--neutral);
+}
+
+/* Floating Cards outside dashboard */
+.float-card {
+  position: absolute;
+  background: var(--neutral);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 3;
+  color: var(--primary);
+}
+
+.float-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-transparent);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.float-details h5 {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-muted);
+}
+
+.float-details p {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.fc-1 { top: 10%; right: -5%; }
+.fc-2 { bottom: 20%; left: -10%; }
+.fc-3 { bottom: -5%; right: 10%; }
+
+/* Sections Common */
+.section {
+  padding: 6rem 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+.section-header h2 {
+  margin-bottom: 1rem;
+}
+
+/* 2. Payroll Overview */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: var(--neutral);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: 1px solid rgba(24, 43, 73, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(24, 169, 153, 0.2);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+  background: var(--accent);
+  color: var(--neutral);
+  transform: rotateY(180deg);
+}
+
+.feature-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+/* 3. Split Screen Automations */
+.split-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.auto-list {
+  margin-top: 2rem;
+}
+
+.auto-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: var(--transition);
+  border-left: 3px solid transparent;
+}
+
+.auto-item:hover {
+  background: var(--neutral);
+  box-shadow: var(--shadow-sm);
+  border-left-color: var(--accent);
+}
+
+.auto-icon {
+  color: var(--accent);
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+/* 4. Employee Experience Portal */
+.portal-mockup {
+  background: var(--primary);
+  border-radius: 24px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.portal-widget {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 16px;
+  color: var(--neutral);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+}
+
+.portal-widget:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.pw-label {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.pw-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* 5. Payroll Workflow (ScrollTrigger) */
+.workflow-section {
+  background: var(--neutral);
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.workflow-track {
+  position: relative;
+  padding: 4rem 0;
+}
+
+.workflow-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary-light);
+  transform: translateY(-50%);
+}
+
+.workflow-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--accent);
+}
+
+.workflow-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.workflow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 14%;
+}
+
+.ws-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--neutral);
+  border: 3px solid var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+  position: relative;
+  z-index: 2;
+}
+
+.workflow-step.active .ws-icon {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 20px rgba(24, 169, 153, 0.3);
+  transform: scale(1.1);
+}
+
+.ws-content h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+.workflow-step.active .ws-content h4 {
+  color: var(--primary);
+}
+
+.ws-content p {
+  font-size: 0.875rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--transition);
+}
+
+.workflow-step.active .ws-content p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 6. Analytics Dashboard Mockup */
+.analytics-dashboard {
+  background: var(--neutral);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(24, 43, 73, 0.05);
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.chart-container {
+  border: 1px solid rgba(24, 43, 73, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+/* Custom CSS Line Chart */
+.css-chart {
+  height: 250px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--primary-light);
+  border-left: 1px solid var(--primary-light);
+}
+
+.chart-bar {
+  flex: 1;
+  background: var(--primary-light);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  height: 0; /* Animated by GSAP */
+}
+
+.chart-bar .fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Animated */
+  background: var(--primary);
+  border-radius: 4px 4px 0 0;
+}
+.chart-bar:nth-child(even) .fill {
+  background: var(--accent);
+}
+
+.chart-label {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* 7. Case Studies Stack */
+.case-study-section {
+  background: var(--primary);
+  color: var(--neutral);
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.case-stack {
+  position: relative;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.case-card {
+  position: absolute;
+  width: 100%;
+  max-width: 600px;
+  background: var(--neutral);
+  color: var(--primary);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top center;
+}
+
+.case-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 3; }
+.case-card:nth-child(2) { transform: translateY(20px) scale(0.95); z-index: 2; opacity: 0.7; }
+.case-card:nth-child(3) { transform: translateY(40px) scale(0.9); z-index: 1; opacity: 0.4; }
+
+.case-card h3 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.case-card .company {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.case-stat p { margin: 0; font-size: 0.875rem; color: var(--text-muted); }
+.case-stat h4 { margin: 0; font-size: 1.25rem; }
+
+/* 8. Final CTA */
+.final-cta {
+  background: var(--primary);
+  text-align: center;
+  padding: 8rem 0;
+  color: var(--neutral);
+  position: relative;
+  overflow: hidden;
+}
+.final-cta h2 { color: var(--neutral); margin-bottom: 1.5rem; }
+.final-cta p { color: rgba(255,255,255,0.7); margin-bottom: 3rem; }
+
+/* Payslip Interactive (Solutions Page) */
+.payslip-preview {
+  background: var(--neutral);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  max-width: 500px;
+  margin: 0 auto;
+  border-top: 8px solid var(--primary);
+}
+.payslip-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px dashed var(--primary-light);
+  padding-bottom: 1rem;
+}
+.payslip-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.payslip-row.total {
+  border-top: 1px solid var(--primary-light);
+  padding-top: 1rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--accent);
+}

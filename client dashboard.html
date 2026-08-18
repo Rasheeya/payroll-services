@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard - STACKLY</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-brand">
+                    <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 40px; width: auto;">
+                </a>
+                <button class="mobile-toggle"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="sidebar-menu">
+                <!-- 1. My Payroll -->
+                <div class="menu-group">
+                    <div class="menu-title">My Payroll</div>
+                    <a href="#" onclick="switchView('view-overview', this); return false;"
+                        class="menu-link active"><span class="menu-icon"><i
+                                class="fa-solid fa-wallet"></i></span>Payroll Overview</a>
+                    <a href="#" onclick="switchView('view-payslips', this); return false;" class="menu-link"><span
+                            class="menu-icon"><i class="fa-solid fa-file-contract"></i></span>Payslips</a>
+                    <a href="#" onclick="switchView('view-payroll-history', this); return false;"
+                        class="menu-link"><span class="menu-icon"><i
+                                class="fa-solid fa-clock-rotate-left"></i></span>Payroll History</a>
+                </div>
+
+                <!-- 2. Attendance & Leave -->
+                <div class="menu-group">
+                    <div class="menu-title">Attendance & Leave</div>
+                    <a href="#" onclick="switchView('view-attendance', this); return false;" class="menu-link"><span
+                            class="menu-icon"><i class="fa-solid fa-clipboard-user"></i></span>My Attendance</a>
+                    <a href="#" onclick="switchView('view-apply-leave', this); return false;" class="menu-link"><span
+                            class="menu-icon"><i class="fa-solid fa-calendar-plus"></i></span>Apply Leave</a>
+                </div>
+
+                <!-- 3. Documents & Reports -->
+                <div class="menu-group">
+                    <div class="menu-title">Documents & Reports</div>
+                    <a href="#" onclick="switchView('view-payslips', this); return false;" class="menu-link"><span
+                            class="menu-icon"><i class="fa-solid fa-file-pdf"></i></span>Payslips</a>
+                    <a href="#" onclick="switchView('view-tax-documents', this); return false;" class="menu-link"><span
+                            class="menu-icon"><i class="fa-solid fa-percent"></i></span>Tax Documents</a>
+                </div>
+
+                <!-- 4. Profile & Support -->
+                <div class="menu-group">
+                    <div class="menu-title">Profile & Support</div>
+                    <a href="login.html" class="menu-link" style="color: #E74C3C;">
+                        <span class="menu-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Area -->
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome back, <span id="welcome-name">John</span>!</h1>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Here is your payroll summary for August
+                        2026.</p>
+                </div>
+
+                <div class="header-actions" style="display: flex; align-items: center; gap: 1.5rem;">
+                    <button class="dashboard-mobile-toggle btn btn-outline" style="padding: 0.5rem; display: none;"><i
+                            class="fa-solid fa-bars"></i></button>
+                    <a href="index.html" class="mobile-logo" style="display: none; margin-right: auto;">
+                        <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 32px; width: auto;">
+                    </a>
+                    <div class="notification-bell">
+                        <i class="fa-solid fa-bell"></i>
+                        <div class="notification-dot"></div>
+                    </div>
+                    <div class="user-profile" style="color: var(--primary);">
+                        <div class="user-avatar" id="profile-avatar" style="background: var(--primary); color: var(--neutral);">J</div>
+                        <div class="user-info">
+                            <h5 style="margin-bottom: 0;" id="profile-name">John Doe</h5>
+                            <p style="margin-bottom: 0; color: var(--text-muted); font-size: 0.75rem;" id="profile-email">Senior Developer
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div id="view-overview" class="spa-view" style="display: block; animation: fadeIn 0.4s ease;"><!-- KPIs -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-details">
+                            <h4>Current Salary</h4>
+                            <div class="kpi-value">&#8377;48,500</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-details">
+                            <h4>Next Payday</h4>
+                            <div class="kpi-value">25 Aug</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-regular fa-calendar-check"></i></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-details">
+                            <h4>Leave Balance</h4>
+                            <div class="kpi-value">12 Days</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-details">
+                            <h4>Attendance</h4>
+                            <div class="kpi-value text-accent">96%</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-user-check"></i></div>
+                    </div>
+                </div>
+
+                <!-- YTD & Quick Actions -->
+                <div class="row" style="margin-bottom: 2.5rem;">
+                    <div class="col-lg-8" style="margin-bottom: 2.5rem;">
+                        <div class="glass-card" style="padding: 1.5rem;" data-aos="fade-up">
+                            <h4 style="color: var(--primary); margin-bottom: 1.5rem;">YTD Financial Summary</h4>
+                            <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                                <div
+                                    style="background: var(--primary-light); padding: 1rem; border-radius: 8px; text-align: center;">
+                                    <div style="color: var(--text-muted); font-size: 0.875rem;">Gross Earnings</div>
+                                    <h4 style="color: var(--primary); margin-top: 0.5rem;"><span class="counter"
+                                            data-target="840000">0</span></h4>
+                                </div>
+                                <div
+                                    style="background: var(--primary-light); padding: 1rem; border-radius: 8px; text-align: center;">
+                                    <div style="color: var(--text-muted); font-size: 0.875rem;">Total Taxes</div>
+                                    <h4 style="color: var(--primary); margin-top: 0.5rem;"><span class="counter"
+                                            data-target="125000">0</span></h4>
+                                </div>
+                                <div
+                                    style="background: var(--primary-light); padding: 1rem; border-radius: 8px; text-align: center;">
+                                    <div style="color: var(--text-muted); font-size: 0.875rem;">Net Pay</div>
+                                    <h4 style="color: var(--accent); margin-top: 0.5rem;"><span class="counter"
+                                            data-target="715000">0</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="glass-card" style="padding: 1.5rem; background: var(--primary); color: white;"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <h4 style="color: white; margin-bottom: 1.5rem;">Leave Balance</h4>
+                            <div
+                                style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                                <div style="text-align: center;">
+                                    <svg viewBox="0 0 36 36" class="circular-chart"
+                                        style="width: 60px; height: 60px; margin: 0 auto; display: block;">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: rgba(255,255,255,0.2);" />
+                                        <path class="circle" data-percentage="60"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: var(--accent);" />
+                                        <text x="18" y="20.35" class="percentage" style="fill: white;"
+                                            text-anchor="middle">12</text>
+                                    </svg>
+                                    <div style="font-size: 0.75rem; margin-top: 0.5rem; color: rgba(255,255,255,0.7);">
+                                        Vacation</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <svg viewBox="0 0 36 36" class="circular-chart"
+                                        style="width: 60px; height: 60px; margin: 0 auto; display: block;">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: rgba(255,255,255,0.2);" />
+                                        <path class="circle" data-percentage="0"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: #E74C3C;" />
+                                        <text x="18" y="20.35" class="percentage" style="fill: white;"
+                                            text-anchor="middle">0</text>
+                                    </svg>
+                                    <div style="font-size: 0.75rem; margin-top: 0.5rem; color: rgba(255,255,255,0.7);">
+                                        Unpaid</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <svg viewBox="0 0 36 36" class="circular-chart"
+                                        style="width: 60px; height: 60px; margin: 0 auto; display: block;">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: rgba(255,255,255,0.2);" />
+                                        <path class="circle" data-percentage="20"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: #3498DB;" />
+                                        <text x="18" y="20.35" class="percentage" style="fill: white;"
+                                            text-anchor="middle">2</text>
+                                    </svg>
+                                    <div style="font-size: 0.75rem; margin-top: 0.5rem; color: rgba(255,255,255,0.7);">
+                                        Personal</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <svg viewBox="0 0 36 36" class="circular-chart"
+                                        style="width: 60px; height: 60px; margin: 0 auto; display: block;">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: rgba(255,255,255,0.2);" />
+                                        <path class="circle" data-percentage="10"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: #2ecc71;" />
+                                        <text x="18" y="20.35" class="percentage" style="fill: white;"
+                                            text-anchor="middle">1</text>
+                                    </svg>
+                                    <div style="font-size: 0.75rem; margin-top: 0.5rem; color: rgba(255,255,255,0.7);">
+                                        Comp Off</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <svg viewBox="0 0 36 36" class="circular-chart"
+                                        style="width: 60px; height: 60px; margin: 0 auto; display: block;">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: rgba(255,255,255,0.2);" />
+                                        <path class="circle" data-percentage="30"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            style="stroke: #f39c12;" />
+                                        <text x="18" y="20.35" class="percentage" style="fill: white;"
+                                            text-anchor="middle">3</text>
+                                    </svg>
+                                    <div style="font-size: 0.75rem; margin-top: 0.5rem; color: rgba(255,255,255,0.7);">
+                                        Sick
+                                        Leave</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Announcements -->
+                <div class="row" style="margin-bottom: 2.5rem;">
+                    <div class="col-lg-6" style="margin-bottom: 2.5rem;">
+                        <div class="glass-card" style="padding: 1.5rem;" data-aos="fade-up">
+                            <h4 style="color: var(--primary); margin-bottom: 1.5rem;">Quick Actions</h4>
+                            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <button class="btn hover-glow"
+                                    style="background: var(--primary-light); color: var(--primary); justify-content: flex-start; border-radius: 8px;"><i
+                                        class="fa-solid fa-plane-departure" style="color: var(--accent);"></i> Request
+                                    Leave</button>
+                                <button class="btn hover-glow"
+                                    style="background: var(--primary-light); color: var(--primary); justify-content: flex-start; border-radius: 8px;"><i
+                                        class="fa-solid fa-file-invoice" style="color: var(--accent);"></i> Submit
+                                    Expense</button>
+                                <button class="btn hover-glow"
+                                    style="background: var(--primary-light); color: var(--primary); justify-content: flex-start; border-radius: 8px;"><i
+                                        class="fa-solid fa-user-pen" style="color: var(--accent);"></i> Update
+                                    Profile</button>
+                                <button class="btn hover-glow"
+                                    style="background: var(--primary-light); color: var(--primary); justify-content: flex-start; border-radius: 8px;"><i
+                                        class="fa-solid fa-circle-question" style="color: var(--accent);"></i> HR
+                                    Support</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="glass-card" style="padding: 1.5rem; background: var(--bg-color);" data-aos="fade-up"
+                            data-aos-delay="100">
+                            <h4 style="color: var(--primary); margin-bottom: 1.5rem;">Company Announcements</h4>
+                            <div
+                                style="background: white; border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; box-shadow: var(--shadow-sm);">
+                                <div style="font-size: 0.75rem; color: var(--text-muted);">Aug 10, 2026</div>
+                                <strong>Q3 Townhall Meeting</strong>
+                                <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">Join us this Friday
+                                    for
+                                    the company-wide update.</p>
+                            </div>
+                            <div
+                                style="background: white; border-radius: 8px; padding: 1rem; box-shadow: var(--shadow-sm);">
+                                <div style="font-size: 0.75rem; color: var(--text-muted);">Aug 05, 2026</div>
+                                <strong>New Healthcare Benefits</strong>
+                                <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">Enrollment is open
+                                    for
+                                    the new dental plan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts and Latest Payslip -->
+                <div class="dash-grid-2">
+
+                    <!-- Salary Breakdown -->
+                    <div class="dash-panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Salary Breakdown</h3>
+                            <span style="font-size: 0.875rem; color: var(--text-muted);">August 2026</span>
+                        </div>
+
+                        <div class="salary-breakdown">
+                            <div class="salary-bar">
+                                <div class="sb-segment sb-basic" title="Basic Salary: ?40,000">60%</div>
+                                <div class="sb-segment sb-allow" title="Allowances: ?12,000">25%</div>
+                                <div class="sb-segment sb-deduct" title="Tax & Deductions: ?3,500">15%</div>
+                            </div>
+
+                            <div class="sb-legend">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: var(--primary);"></div>
+                                    Basic (?40k)
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: var(--accent);"></div>
+                                    Allowances (?12k)
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: #E74C3C;"></div>
+                                    Deductions (?3.5k)
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inbox/Notifications -->
+                        <div style="margin-top: 3rem;">
+                            <h4 style="margin-bottom: 1rem;">Recent Notifications</h4>
+                            <div class="email-list" id="dynamic-email-list" data-type="client">
+                                <!-- Content generated by email-data.js -->
+                                <div style="padding: 2rem; text-align: center; color: var(--text-muted);">
+                                    <i class="fa-solid fa-spinner fa-spin"></i> Loading...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latest Payslip Card -->
+                    <div class="dash-panel"
+                        style="background: linear-gradient(135deg, var(--primary) 0%, #111e33 100%); color: var(--neutral); position: relative; overflow: hidden; display: flex; flex-direction: column;">
+                        <!-- Decor -->
+                        <i class="fa-solid fa-file-invoice"
+                            style="position: absolute; right: -20px; top: -20px; font-size: 10rem; opacity: 0.05; transform: rotate(15deg);"></i>
+
+                        <h3 style="color: var(--neutral); margin-bottom: 0.5rem; position: relative; z-index: 2;">Latest
+                            Payslip</h3>
+                        <p
+                            style="color: rgba(255,255,255,0.7); font-size: 0.875rem; margin-bottom: 2rem; position: relative; z-index: 2;">
+                            August 2026</p>
+
+                        <div
+                            style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; position: relative; z-index: 2; margin-bottom: auto;">
+                            <div
+                                style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem;">
+                                <span style="color: rgba(255,255,255,0.7);">Net Salary</span>
+                                <strong style="color: var(--accent);">?48,500</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="color: rgba(255,255,255,0.7); font-size: 0.875rem;">Gross</span>
+                                <span style="font-size: 0.875rem;">?52,000</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: rgba(255,255,255,0.7); font-size: 0.875rem;">Deductions</span>
+                                <span style="font-size: 0.875rem;">?3,500</span>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem; position: relative; z-index: 2;">
+                            <button class="btn btn-accent" style="flex: 1; padding: 0.5rem;"><i
+                                    class="fa-solid fa-eye"></i>
+                                View</button>
+                            <button class="btn btn-outline-neutral" style="flex: 1; padding: 0.5rem;"><i
+                                    class="fa-solid fa-download"></i> Download</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id='view-payslips' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+                <div style="margin-bottom: 2rem;">
+                    <h2>Payslips</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">View and download your payslips.</p>
+                </div>
+                <div class="dash-panel" data-aos="fade-up">
+                    <div style="overflow-x: auto;">
+                        <div class="table-responsive">
+                            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                                <thead>
+                                    <tr
+                                        style="border-bottom: 2px solid var(--primary-light); color: var(--text-muted);">
+                                        <th style="padding: 1rem;">Month</th>
+                                        <th style="padding: 1rem;">Gross Pay</th>
+                                        <th style="padding: 1rem;">Deductions</th>
+                                        <th style="padding: 1rem;">Net Pay</th>
+                                        <th style="padding: 1rem; text-align: right;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--primary-light);">
+                                        <td style="padding: 1rem;"><strong>July 2026</strong></td>
+                                        <td style="padding: 1rem;">$52,000</td>
+                                        <td style="padding: 1rem;">$3,500</td>
+                                        <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$48,500</td>
+                                        <td style="padding: 1rem; text-align: right;">
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                                    class="fa-solid fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--primary-light);">
+                                        <td style="padding: 1rem;"><strong>June 2026</strong></td>
+                                        <td style="padding: 1rem;">$52,000</td>
+                                        <td style="padding: 1rem;">$3,500</td>
+                                        <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$48,500</td>
+                                        <td style="padding: 1rem; text-align: right;">
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                                    class="fa-solid fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--primary-light);">
+                                        <td style="padding: 1rem;"><strong>May 2026</strong></td>
+                                        <td style="padding: 1rem;">$52,000</td>
+                                        <td style="padding: 1rem;">$3,500</td>
+                                        <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$48,500</td>
+                                        <td style="padding: 1rem; text-align: right;">
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                                    class="fa-solid fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--primary-light);">
+                                        <td style="padding: 1rem;"><strong>April 2026</strong></td>
+                                        <td style="padding: 1rem;">$50,000</td>
+                                        <td style="padding: 1rem;">$3,200</td>
+                                        <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$46,800</td>
+                                        <td style="padding: 1rem; text-align: right;">
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                                    class="fa-solid fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--primary-light);">
+                                        <td style="padding: 1rem;"><strong>March 2026</strong></td>
+                                        <td style="padding: 1rem;">$50,000</td>
+                                        <td style="padding: 1rem;">$3,200</td>
+                                        <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$46,800</td>
+                                        <td style="padding: 1rem; text-align: right;">
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                                    class="fa-solid fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--primary-light);">
+                                        <td style="padding: 1rem;"><strong>February 2026</strong></td>
+                                        <td style="padding: 1rem;">$50,000</td>
+                                        <td style="padding: 1rem;">$3,200</td>
+                                        <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$46,800</td>
+                                        <td style="padding: 1rem; text-align: right;">
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                                    class="fa-solid fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+<div id='view-payroll-history' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+                <div style="margin-bottom: 2rem;">
+                    <h2>Payroll History</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Your past payroll records.</p>
+                </div>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-details">
+                            <h4>YTD Earnings</h4>
+                            <div class="kpi-value">$339,500</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-details">
+                            <h4>YTD Taxes</h4>
+                            <div class="kpi-value">$24,500</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-building-columns"></i></div>
+                    </div>
+                </div>
+
+                <div class="dash-panel" style="margin-top: 2rem;">
+                    <h3 class="panel-title" style="margin-bottom: 1.5rem;">Recent Deposits</h3>
+                    <div class="table-responsive">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--primary-light); color: var(--text-muted);">
+                                    <th style="padding: 1rem;">Date</th>
+                                    <th style="padding: 1rem;">Description</th>
+                                    <th style="padding: 1rem;">Account</th>
+                                    <th style="padding: 1rem;">Amount</th>
+                                    <th style="padding: 1rem;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid var(--primary-light);">
+                                    <td style="padding: 1rem;">25 Jul 2026</td>
+                                    <td style="padding: 1rem;">July Salary</td>
+                                    <td style="padding: 1rem;">**** 4921</td>
+                                    <td style="padding: 1rem; font-weight: 600;">$48,500</td>
+                                    <td style="padding: 1rem;"><span
+                                            style="background: rgba(46,204,113,0.1); color: #2ecc71; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Completed</span>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--primary-light);">
+                                    <td style="padding: 1rem;">25 Jun 2026</td>
+                                    <td style="padding: 1rem;">June Salary</td>
+                                    <td style="padding: 1rem;">**** 4921</td>
+                                    <td style="padding: 1rem; font-weight: 600;">$48,500</td>
+                                    <td style="padding: 1rem;"><span
+                                            style="background: rgba(46,204,113,0.1); color: #2ecc71; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Completed</span>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--primary-light);">
+                                    <td style="padding: 1rem;">25 May 2026</td>
+                                    <td style="padding: 1rem;">May Salary</td>
+                                    <td style="padding: 1rem;">**** 4921</td>
+                                    <td style="padding: 1rem; font-weight: 600;">$48,500</td>
+                                    <td style="padding: 1rem;"><span
+                                            style="background: rgba(46,204,113,0.1); color: #2ecc71; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Completed</span>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--primary-light);">
+                                    <td style="padding: 1rem;">25 Apr 2026</td>
+                                    <td style="padding: 1rem;">April Salary</td>
+                                    <td style="padding: 1rem;">**** 4921</td>
+                                    <td style="padding: 1rem; font-weight: 600;">$46,800</td>
+                                    <td style="padding: 1rem;"><span
+                                            style="background: rgba(46,204,113,0.1); color: #2ecc71; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Completed</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            
+<div id='view-attendance' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+                <div style="margin-bottom: 2rem;">
+                    <h2>My Attendance</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Your attendance records.</p>
+                </div>
+                <div class="dash-grid-2">
+                    <div class="dash-panel">
+                        <h3 class="panel-title" style="margin-bottom: 1rem;">Recent Swipes</h3>
+                        <div
+                            style="display: flex; justify-content: space-between; padding: 1rem; border-bottom: 1px solid var(--primary-light);">
+                            <div><strong>Today</strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Aug 18, 2026</span></div>
+                            <div style="text-align: right;"><strong>In: 09:00 AM</strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Out: --:--</span></div>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; padding: 1rem; border-bottom: 1px solid var(--primary-light);">
+                            <div><strong>Yesterday</strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Aug 17, 2026</span></div>
+                            <div style="text-align: right;"><strong>In: 08:55 AM</strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Out: 05:05 PM</span></div>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; padding: 1rem; border-bottom: 1px solid var(--primary-light);">
+                            <div><strong>Wednesday</strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Aug 16, 2026</span></div>
+                            <div style="text-align: right;"><strong>In: 09:02 AM</strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Out: 05:10 PM</span></div>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; padding: 1rem; border-bottom: 1px solid var(--primary-light);">
+                            <div><strong>Tuesday</strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Aug 15, 2026</span></div>
+                            <div style="text-align: right;"><strong>In: 08:50 AM</strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Out: 05:00 PM</span></div>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; padding: 1rem; border-bottom: 1px solid var(--primary-light);">
+                            <div><strong>Monday</strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Aug 14, 2026</span></div>
+                            <div style="text-align: right;"><strong>In: 09:15 AM <span
+                                        style="color: #E74C3C;">(Late)</span></strong><br><span
+                                    style="font-size: 0.75rem; color: var(--text-muted);">Out: 05:30 PM</span></div>
+                        </div>
+                    </div>
+                    <div class="dash-panel" style="background: var(--primary); color: white;">
+                        <h3 class="panel-title" style="color: white; margin-bottom: 1rem;">Attendance Rate</h3>
+                        <div style="font-size: 3rem; font-weight: 700; color: var(--accent);">96%</div>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.875rem;">You are maintaining an excellent
+                            attendance record this month.</p>
+                    </div>
+                </div>
+            </div>
+
+            
+<div id='view-apply-leave' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+                <div style="margin-bottom: 2rem;">
+                    <h2>Apply Leave</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Submit a new leave request.</p>
+                </div>
+                <div class="dash-panel" style="max-width: 600px;">
+                    <form>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Leave Type</label>
+                            <select
+                                style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--primary-light); background: var(--bg-color);">
+                                <option>Annual Leave</option>
+                                <option>Sick Leave</option>
+                                <option>Unpaid Leave</option>
+                            </select>
+                        </div>
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Start
+                                    Date</label>
+                                <input type="date"
+                                    style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--primary-light); background: var(--bg-color);">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">End Date</label>
+                                <input type="date"
+                                    style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--primary-light); background: var(--bg-color);">
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Reason</label>
+                            <textarea rows="4"
+                                style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--primary-light); background: var(--bg-color); resize: vertical;"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+
+            
+<div id='view-tax-documents' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+                <div style="margin-bottom: 2rem;">
+                    <h2>Tax Documents</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Your tax forms and documents.</p>
+                </div>
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div class="dash-panel hover-glow"
+                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                        <div
+                            style="width: 48px; height: 48px; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">W-2 Form 2025</h4>
+                            <p style="margin: 0; font-size: 0.75rem; color: var(--text-muted);">Issued: Jan 2026</p>
+                        </div>
+                    </div>
+                    <div class="dash-panel hover-glow"
+                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                        <div
+                            style="width: 48px; height: 48px; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">1099-MISC 2025</h4>
+                            <p style="margin: 0; font-size: 0.75rem; color: var(--text-muted);">Issued: Jan 2026</p>
+                        </div>
+                    </div>
+                    <div class="dash-panel hover-glow"
+                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                        <div
+                            style="width: 48px; height: 48px; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">W-2 Form 2024</h4>
+                            <p style="margin: 0; font-size: 0.75rem; color: var(--text-muted);">Issued: Jan 2025</p>
+                        </div>
+                    </div>
+                    <div class="dash-panel hover-glow"
+                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                        <div
+                            style="width: 48px; height: 48px; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">1099-MISC 2024</h4>
+                            <p style="margin: 0; font-size: 0.75rem; color: var(--text-muted);">Issued: Jan 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+<div id='view-bank-details' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+                <div style="margin-bottom: 2rem;">
+                    <h2>Bank Details</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Update your direct deposit info.</p>
+                </div>
+                <div class="dash-panel" style="max-width: 500px;">
+                    <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--primary-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary);">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0;">Chase Bank</h4>
+                            <p style="margin: 0; color: var(--text-muted); font-size: 0.875rem;">Checking Account</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--bg-color); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <p style="margin: 0 0 0.5rem 0; font-size: 0.75rem; color: var(--text-muted);">Account Number
+                        </p>
+                        <p style="margin: 0; font-weight: 600;">**** **** **** 4921</p>
+                    </div>
+                    <div style="background: var(--bg-color); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <p style="margin: 0 0 0.5rem 0; font-size: 0.75rem; color: var(--text-muted);">Routing Number
+                        </p>
+                        <p style="margin: 0; font-weight: 600;">021000021</p>
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%;">Request Change</button>
+                </div>
+            </div>
+
+            
+<div id='view-notification-prefs' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+                <div style="margin-bottom: 2rem;">
+                    <h2>Notification Preferences</h2>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Manage your alerts.</p>
+                </div>
+                <div class="dash-panel" style="max-width: 500px;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--primary-light);">
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">Email Notifications</h4>
+                            <p style="margin: 0; font-size: 0.75rem; color: var(--text-muted);">Receive payslips and
+                                updates via email.</p>
+                        </div>
+                        <div
+                            style="width: 44px; height: 24px; background: var(--accent); border-radius: 12px; position: relative; cursor: pointer;">
+                            <div
+                                style="width: 20px; height: 20px; background: white; border-radius: 50%; position: absolute; right: 2px; top: 2px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--primary-light);">
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">SMS Alerts</h4>
+                            <p style="margin: 0; font-size: 0.75rem; color: var(--text-muted);">Get text messages for
+                                urgent HR updates.</p>
+                        </div>
+                        <div
+                            style="width: 44px; height: 24px; background: var(--text-muted); border-radius: 12px; position: relative; cursor: pointer;">
+                            <div
+                                style="width: 20px; height: 20px; background: white; border-radius: 50%; position: absolute; left: 2px; top: 2px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+</main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        function switchView(viewId, element) {
+            // ALWAYS close sidebar immediately on click
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.remove('active');
+            }
+
+            const targetView = document.getElementById(viewId);
+            if (!targetView) {
+                return;
+            }
+
+            document.querySelectorAll('.spa-view').forEach(el => el.style.display = 'none');
+            targetView.style.display = 'block';
+        window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
+
+            document.querySelectorAll('.menu-link').forEach(el => el.classList.remove('active'));
+            if (element) element.classList.add('active');
+
+            // Refresh AOS so animated elements appear
+            if (typeof AOS !== 'undefined') {
+                AOS.refreshHard();
+            }
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+

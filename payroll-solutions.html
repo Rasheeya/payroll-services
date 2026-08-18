@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Solutions - STACKLY</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 40px; width: auto;">
+            </a>
+
+            <button class="mobile-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="payroll-solutions.html" class="nav-link active">Payroll Solutions</a>
+                <a href="hr-management.html" class="nav-link">HR Management</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+
+                <div style="display: flex; gap: 1rem; align-items: center; margin-left: 1rem;">
+                    <a href="login.html" class="btn btn-accent" style="padding: 0.5rem 1.25rem;">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container"
+            style="display: flex; flex-direction: column; text-align: center; justify-content: center; align-items: center;">
+            <h1 class="hero-title" style="margin-bottom: 1rem;">Complete Payroll Management</h1>
+            <p class="hero-subtitle">From complex salary structures to seamless tax deductions, we handle it all.</p>
+        </div>
+    </section>
+
+    <!-- 1. Salary Processing -->
+    <section class="section bg-color">
+        <div class="container">
+            <div class="split-section" class="custom-grid-2-col-center">
+                <div data-aos="fade-right">
+                    <h2>Advanced Salary Processing</h2>
+                    <ul class="auto-list">
+                        <li class="auto-item"><i class="fa-solid fa-check text-accent"></i>
+                            <div>
+                                <h4>Monthly payroll</h4>
+                                <p>Automated cycles.</p>
+                            </div>
+                        </li>
+                        <li class="auto-item"><i class="fa-solid fa-check text-accent"></i>
+                            <div>
+                                <h4>Salary structures</h4>
+                                <p>Customizable compensation plans.</p>
+                            </div>
+                        </li>
+                        <li class="auto-item"><i class="fa-solid fa-check text-accent"></i>
+                            <div>
+                                <h4>Allowances</h4>
+                                <p>Dynamic additions based on role.</p>
+                            </div>
+                        </li>
+                        <li class="auto-item"><i class="fa-solid fa-check text-accent"></i>
+                            <div>
+                                <h4>Deductions & Bonuses</h4>
+                                <p>Precision calculated automatically.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glass-card"
+                    style="padding: 3rem; display: flex; align-items: center; justify-content: center;"
+                    data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=50&w=400&fm=webp"
+                        alt="Payroll Processing"
+                        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Tax & Deductions -->
+    <section class="section bg-neutral">
+        <div class="container text-center" data-aos="fade-up">
+            <h2>Tax & Deductions</h2>
+            <div class="overview-grid" style="margin-top: 3rem;">
+                <div class="feature-card">
+                    <i class="fa-solid fa-percent text-accent" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <h4>Tax calculations</h4>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-minus text-accent" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <h4>Deduction tracking</h4>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-file-contract text-accent" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <h4>Compliance records</h4>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-file-invoice text-accent" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <h4>Tax reports</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Payslip Management (Interactive preview) -->
+    <section class="section bg-color">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Payslip Management</h2>
+                <p>Digital payslips generated instantly.</p>
+            </div>
+
+            <div class="payslip-preview" id="payslip-anim" data-aos="zoom-in">
+                <div class="payslip-header">
+                    <h3>STACKLY PAYSLIP</h3>
+                    <p>August 2026</p>
+                </div>
+                <div class="payslip-row">
+                    <span>Employee</span>
+                    <strong>John Doe</strong>
+                </div>
+                <div class="payslip-row">
+                    <span>Basic Salary</span>
+                    <span>₹40,000</span>
+                </div>
+                <div class="payslip-row">
+                    <span>Allowances</span>
+                    <span>₹12,000</span>
+                </div>
+                <div class="payslip-row">
+                    <span>Deductions</span>
+                    <span style="color: #E74C3C;">-₹3,500</span>
+                </div>
+                <div class="payslip-row total">
+                    <span>Net Salary</span>
+                    <span>₹48,500</span>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-primary"><i class="fa-solid fa-download"></i> Download Payslip</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Payroll Approval -->
+    <section class="section bg-primary text-neutral" style="color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">Payroll Approval Workflow</h2>
+            </div>
+            <div class="approval-workflow"
+                style="display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto; text-align: center;">
+                <div class="workflow-node" data-aos="fade-up" data-aos-delay="0"><i class="fa-solid fa-file-pen"
+                        style="font-size: 2rem; margin-bottom: 1rem;"></i><br>Draft</div>
+                <i class="fa-solid fa-arrow-right text-accent workflow-arrow" data-aos="fade-right"
+                    data-aos-delay="100"></i>
+                <div class="workflow-node" data-aos="fade-up" data-aos-delay="200"><i
+                        class="fa-solid fa-magnifying-glass"
+                        style="font-size: 2rem; margin-bottom: 1rem;"></i><br>Review</div>
+                <i class="fa-solid fa-arrow-right text-accent workflow-arrow" data-aos="fade-right"
+                    data-aos-delay="300"></i>
+                <div class="workflow-node" data-aos="fade-up" data-aos-delay="400"><i class="fa-solid fa-user-check"
+                        style="font-size: 2rem; margin-bottom: 1rem;"></i><br>Approval
+                </div>
+                <i class="fa-solid fa-arrow-right text-accent workflow-arrow" data-aos="fade-right"
+                    data-aos-delay="500"></i>
+                <div class="workflow-node" data-aos="fade-up" data-aos-delay="600"><i class="fa-solid fa-check-double"
+                        style="font-size: 2rem; margin-bottom: 1rem;"></i><br>Processed
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Payroll Map & Compliance Monitoring -->
+    <section class="section">
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div data-aos="fade-right">
+                    <h2>Global Payroll Capabilities</h2>
+                    <p style="margin-bottom: 2rem;">Pay your international workforce accurately and on time with our
+                        multi-currency support.</p>
+                    <div class="card hover-glow" style="text-align: center;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+                            alt="World Map"
+                            style="width: 75%; max-width: 500px; margin: 0 auto; border-radius: 8px; opacity: 0.8; filter: invert(0.8);">
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <h2>Compliance Monitoring</h2>
+                    <p style="margin-bottom: 2rem;">Real-time health scores for your statutory compliances.</p>
+
+                    <div class="progress-wrap">
+                        <div class="prog-header"><span>Tax Filings</span> <span>100%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="100%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="prog-header"><span>Employee Classifications</span> <span>95%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="95%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="prog-header"><span>Minimum Wage Laws</span> <span>100%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="100%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="prog-header"><span>Data Privacy (GDPR)</span> <span>98%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="98%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Feature Grid -->
+    <section class="section bg-color">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Deep Dive into Payroll Features</h2>
+            </div>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="card hover-glow" data-aos="zoom-in" data-aos-delay="0">
+                    <div class="icon-box"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                    <h3>Direct Deposits</h3>
+                    <p>Automated clearing house (ACH) transfers for next-day pay.</p>
+                </div>
+                <div class="card hover-glow" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="icon-box"><i class="fa-solid fa-gavel"></i></div>
+                    <h3>Garnishments</h3>
+                    <p>Auto-calculation of child support and tax levies.</p>
+                </div>
+                <div class="card hover-glow" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h3>Off-Cycle Runs</h3>
+                    <p>Run bonus or correction payrolls anytime.</p>
+                </div>
+                <div class="card hover-glow" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="icon-box"><i class="fa-solid fa-file-invoice"></i></div>
+                    <h3>Custom Reports</h3>
+                    <p>Generate detailed financial journals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Make Payroll Effortless</h2>
+            <a href="404.html" class="btn btn-accent">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="footer-brand">
+                        <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 40px; width: auto;">
+                    </a>
+                    <p class="footer-desc">AI-driven next-generation payroll and HR platform protecting your
+                        organization's time and resources.</p>
+                    <div class="footer-socials">
+                        <a href="404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="payroll-solutions.html">Payroll Solutions</a></li>
+                        <li><a href="hr-management.html">HR Management</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="404.html">About Us</a></li>
+                        <li><a href="contact.html">Support</a></li>
+                        <li><a href="404.html">Privacy Policy</a></li>
+                        <li><a href="404.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fa-regular fa-envelope"></i> info@stackly.com</li>
+                        <li><i class="fa-solid fa-phone"></i> 9876543210</li>
+                        <li><i class="fa-solid fa-location-dot"></i> MMR Complex, Chinna Thirupathi, near Chinna
+                            Muniyappan Kovil, Salem, Tamil Nadu 636008</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Our Location</h4>
+                    <div class="footer-map">
+                        <iframe src="https://maps.google.com/maps?q=11.6829566,78.1739798&hl=en&z=17&output=embed"
+                            width="100%" height="150" style="border:0; border-radius: 8px; opacity: 0.8;"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 STACKLY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Custom animation for this page
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo('#payslip-anim',
+                { y: 100, rotateX: -20, opacity: 0 },
+                {
+                    y: 0,
+                    rotateX: 0,
+                    opacity: 1,
+                    duration: 1,
+                    scrollTrigger: { trigger: '#payslip-anim', start: 'top 80%' }
+                }
+            );
+        }
+    </script>
+</body>
+
+</html>

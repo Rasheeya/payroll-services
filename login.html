@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - STACKLY</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <div class="auth-layout">
+        <!-- Visual Side -->
+        <div class="auth-visual">
+            <div class="auth-visual-content">
+                <i class="fa-solid fa-money-check-dollar"
+                    style="font-size: 4rem; color: var(--accent); margin-bottom: 2rem;"></i>
+                <h2>Payroll Command Center</h2>
+                <p>Access your automated payroll processes, employee data, and financial reporting in one secure place.
+                </p>
+            </div>
+
+            <!-- Dashboard preview illustration element -->
+            <div
+                style="position: absolute; bottom: -50px; right: -50px; width: 400px; height: 300px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); transform: rotate(-5deg); z-index: 1;">
+                <div style="padding: 2rem;">
+                    <div
+                        style="width: 50%; height: 10px; background: rgba(255,255,255,0.2); border-radius: 5px; margin-bottom: 1rem;">
+                    </div>
+                    <div
+                        style="width: 80%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; margin-bottom: 2rem;">
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                        <div
+                            style="width: 60px; height: 60px; border-radius: 12px; background: rgba(24, 169, 153, 0.2);">
+                        </div>
+                        <div style="width: 60px; height: 60px; border-radius: 12px; background: rgba(255,255,255,0.1);">
+                        </div>
+                        <div style="width: 60px; height: 60px; border-radius: 12px; background: rgba(255,255,255,0.1);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="auth-form-container">
+            <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+            <div class="auth-form-header">
+                <h3>Welcome Back</h3>
+                <p>Please enter your credentials to access your account.</p>
+            </div>
+
+            <form class="validate-form" novalidate>
+                <div class="form-group">
+                    <label for="role">Select Role</label>
+                    <select id="role" class="form-control" required aria-required="true">
+                        <option value="#">Select Role</option>
+                        <option value="user">client</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <div class="error-message">Please select a role</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Work Email</label>
+                    <input type="email" id="email" class="form-control" required placeholder="name@company.com">
+                    <div class="error-message">Please enter a valid email</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div style="position: relative;">
+                        <input type="password" id="password" class="form-control" required placeholder="Password"
+                            style="padding-right: 2.5rem;">
+                        <span id="toggle-password"
+                            style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--primary); opacity: 0.6; transition: 0.3s;">
+                            <i class="fa-regular fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="error-message">Password must be at least 8 characters</div>
+                </div>
+
+                <div class="form-options">
+                    <a href="404.html" class="forgot-link">Forgot Password</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="signup.html">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
