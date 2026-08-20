@@ -81,7 +81,7 @@
                     </a>
                 </div>
                 <div class="menu-group">
-                    <a href="index.html" class="menu-link">
+                    <a href="login.html" class="menu-link">
                         <span class="menu-icon"><i class="fa-solid fa-power-off"></i></span>
                         Logout
                     </a>
@@ -105,17 +105,121 @@
                     <a href="index.html" class="mobile-logo" style="display: none; margin-right: auto;">
                         <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 32px; width: auto;">
                     </a>
-                    <div class="notification-bell">
+                    <div class="notification-bell" id="admin-notification-bell" title="Notifications"
+                        onclick="toggleNotifDropdown(event, this)">
                         <i class="fa-solid fa-bell"></i>
                         <div class="notification-dot"></div>
+                        <!-- Notification Dropdown -->
+                        <div class="notification-dropdown" id="admin-notif-dropdown">
+                            <div class="dropdown-header">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <h4>Notifications</h4>
+                                    <span class="badge">3 New</span>
+                                </div>
+                                <button class="dropdown-mark-read">Mark all as read</button>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread"
+                                    onclick="switchView('view-payroll-approval', document.querySelectorAll('.sidebar-menu .menu-link')[2])">
+                                    <div class="notification-icon-box"
+                                        style="background: rgba(24, 169, 153, 0.1); color: var(--accent);">
+                                        <i class="fa-solid fa-file-signature"></i>
+                                    </div>
+                                    <div class="notification-item-content">
+                                        <h5>Payroll Approval Required</h5>
+                                        <p>August 2026 payroll batch is waiting for review.</p>
+                                        <span class="time">10 min ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread"
+                                    onclick="switchView('view-leave-requests', document.querySelectorAll('.sidebar-menu .menu-link')[5])">
+                                    <div class="notification-icon-box"
+                                        style="background: rgba(243, 156, 18, 0.1); color: #f39c12;">
+                                        <i class="fa-solid fa-calendar-plus"></i>
+                                    </div>
+                                    <div class="notification-item-content">
+                                        <h5>New Leave Requests</h5>
+                                        <p>3 employees submitted leave requests for next week.</p>
+                                        <span class="time">35 min ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread"
+                                    onclick="switchView('view-salary-reports', document.querySelectorAll('.sidebar-menu .menu-link')[6])">
+                                    <div class="notification-icon-box"
+                                        style="background: rgba(46, 204, 113, 0.1); color: #2ecc71;">
+                                        <i class="fa-solid fa-chart-pie"></i>
+                                    </div>
+                                    <div class="notification-item-content">
+                                        <h5>Monthly Tax Report Ready</h5>
+                                        <p>Compliance and tax report for July has been generated.</p>
+                                        <span class="time">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item"
+                                    onclick="switchView('view-employee-salary', document.querySelectorAll('.sidebar-menu .menu-link')[3])">
+                                    <div class="notification-icon-box"
+                                        style="background: rgba(52, 152, 219, 0.1); color: #3498db;">
+                                        <i class="fa-solid fa-user-check"></i>
+                                    </div>
+                                    <div class="notification-item-content">
+                                        <h5>New Employee Added</h5>
+                                        <p>Alex Rivera was added to Engineering department.</p>
+                                        <span class="time">Yesterday</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <button
+                                    onclick="switchView('view-overview', document.querySelectorAll('.sidebar-menu .menu-link')[0])">View
+                                    All Activity</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="user-profile" style="color: var(--primary);">
+                    <div class="user-profile" id="admin-user-profile" style="color: var(--primary);"
+                        onclick="toggleProfileDropdown(event, this)">
                         <div class="user-avatar" id="profile-avatar"
                             style="background: var(--primary); color: var(--neutral);">S</div>
                         <div class="user-info">
                             <h5 style="margin-bottom: 0;" id="profile-name">Sarah Connor</h5>
                             <p style="margin-bottom: 0; color: var(--text-muted); font-size: 0.75rem;"
                                 id="profile-email">HR Admin</p>
+                        </div>
+                        <!-- Profile Dropdown -->
+                        <div class="profile-dropdown" id="admin-profile-dropdown">
+                            <div class="profile-dropdown-header">
+                                <div class="user-avatar"
+                                    style="background: var(--primary); color: var(--neutral); width: 36px; height: 36px; font-size: 0.875rem;">
+                                    S</div>
+                                <div>
+                                    <h5 style="margin: 0; font-size: 0.875rem; color: var(--primary);"
+                                        id="dropdown-profile-name">Sarah Connor</h5>
+                                    <p style="margin: 0; font-size: 0.75rem; color: var(--text-muted);"
+                                        id="dropdown-profile-email">HR Admin</p>
+                                </div>
+                            </div>
+                            <div class="profile-dropdown-menu">
+                                <button class="profile-menu-item"
+                                    onclick="switchView('view-overview', document.querySelectorAll('.sidebar-menu .menu-link')[0])">
+                                    <i class="fa-solid fa-chart-pie"></i> Payroll Overview
+                                </button>
+                                <button class="profile-menu-item"
+                                    onclick="switchView('view-employee-salary', document.querySelectorAll('.sidebar-menu .menu-link')[3])">
+                                    <i class="fa-solid fa-users"></i> Employee Salary
+                                </button>
+                                <button class="profile-menu-item"
+                                    onclick="switchView('view-payroll-approval', document.querySelectorAll('.sidebar-menu .menu-link')[2])">
+                                    <i class="fa-solid fa-check-double"></i> Pending Approvals
+                                </button>
+                                <div class="profile-dropdown-divider"></div>
+                                <a href="client dashboard.html" class="profile-menu-item" style="color: var(--accent);">
+                                    <i class="fa-solid fa-arrow-right-arrow-left" style="color: var(--accent);"></i>
+                                    Switch to Employee View
+                                </a>
+                                <div class="profile-dropdown-divider"></div>
+                                <a href="login.html" class="profile-menu-item logout-item">
+                                    <i class="fa-solid fa-power-off"></i> Logout
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -139,7 +243,7 @@
                     <div class="kpi-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="kpi-details">
                             <h4>Payroll Cost</h4>
-                            <div class="kpi-value">?24.5L</div>
+                            <div class="kpi-value">₹24.5L</div>
                         </div>
                         <div class="kpi-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
                     </div>
@@ -174,8 +278,9 @@
                         <div class="dash-panel">
                             <div class="panel-header">
                                 <h3 class="panel-title">Pending Approvals</h3>
-                                <a href="404.html"
-                                    style="font-size: 0.875rem; color: var(--accent); text-decoration: none;">View
+                                <a href="#"
+                                    onclick="switchView('view-payroll-approval', document.querySelectorAll('.sidebar-menu .menu-link')[2]); return false;"
+                                    style="font-size: 0.875rem; color: var(--accent); text-decoration: none; font-weight: 600;">View
                                     All</a>
                             </div>
                             <div style="display: flex; flex-direction: column; gap: 1rem;">
@@ -184,7 +289,8 @@
                                     <div style="display: flex; align-items: center; gap: 1rem;">
                                         <div
                                             style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center;">
-                                            <i class="fa-solid fa-plane-departure"></i></div>
+                                            <i class="fa-solid fa-plane-departure"></i>
+                                        </div>
                                         <div>
                                             <h5 style="margin: 0; font-size: 0.875rem;">John Smith</h5>
                                             <span style="font-size: 0.75rem; color: var(--text-muted);">Annual Leave (3
@@ -193,9 +299,11 @@
                                     </div>
                                     <div style="display: flex; gap: 0.5rem;">
                                         <button class="btn hover-glow"
+                                            onclick="this.parentElement.innerHTML = '<span style=\'color: #2ecc71; font-size: 0.75rem; font-weight: 600;\'><i class=\'fa-solid fa-check\'></i> Approved</span>'; showToast('Leave request approved!', 'success');"
                                             style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer;"><i
                                                 class="fa-solid fa-check"></i></button>
                                         <button class="btn hover-glow"
+                                            onclick="this.parentElement.innerHTML = '<span style=\'color: #E74C3C; font-size: 0.75rem; font-weight: 600;\'><i class=\'fa-solid fa-xmark\'></i> Rejected</span>'; showToast('Leave request rejected', 'danger');"
                                             style="padding: 0.4rem 0.8rem; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border: none; border-radius: 6px; cursor: pointer;"><i
                                                 class="fa-solid fa-xmark"></i></button>
                                     </div>
@@ -206,7 +314,8 @@
                                     <div style="display: flex; align-items: center; gap: 1rem;">
                                         <div
                                             style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center;">
-                                            <i class="fa-solid fa-file-invoice-dollar"></i></div>
+                                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                                        </div>
                                         <div>
                                             <h5 style="margin: 0; font-size: 0.875rem;">Sarah Connor</h5>
                                             <span style="font-size: 0.75rem; color: var(--text-muted);">Expense Claim
@@ -215,9 +324,11 @@
                                     </div>
                                     <div style="display: flex; gap: 0.5rem;">
                                         <button class="btn hover-glow"
+                                            onclick="this.parentElement.innerHTML = '<span style=\'color: #2ecc71; font-size: 0.75rem; font-weight: 600;\'><i class=\'fa-solid fa-check\'></i> Approved</span>'; showToast('Expense claim approved!', 'success');"
                                             style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer;"><i
                                                 class="fa-solid fa-check"></i></button>
                                         <button class="btn hover-glow"
+                                            onclick="this.parentElement.innerHTML = '<span style=\'color: #E74C3C; font-size: 0.75rem; font-weight: 600;\'><i class=\'fa-solid fa-xmark\'></i> Rejected</span>'; showToast('Expense claim rejected', 'danger');"
                                             style="padding: 0.4rem 0.8rem; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border: none; border-radius: 6px; cursor: pointer;"><i
                                                 class="fa-solid fa-xmark"></i></button>
                                     </div>
@@ -231,19 +342,27 @@
                         <div class="dash-panel" style="margin-bottom: 1.5rem;">
                             <h3 class="panel-title" style="margin-bottom: 1.5rem;">Quick Actions</h3>
                             <div class="quick-actions-grid">
-                                <a href="404.html" class="action-btn">
+                                <a href="#"
+                                    onclick="switchView('view-payroll-approval', document.querySelectorAll('.sidebar-menu .menu-link')[2]); return false;"
+                                    class="action-btn">
                                     <i class="fa-solid fa-play"></i>
                                     <span>Run Payroll</span>
                                 </a>
-                                <a href="404.html" class="action-btn">
+                                <a href="#"
+                                    onclick="switchView('view-employee-salary', document.querySelectorAll('.sidebar-menu .menu-link')[3]); return false;"
+                                    class="action-btn">
                                     <i class="fa-solid fa-user-plus"></i>
                                     <span>Add Employee</span>
                                 </a>
-                                <a href="404.html" class="action-btn">
+                                <a href="#"
+                                    onclick="switchView('view-salary-reports', document.querySelectorAll('.sidebar-menu .menu-link')[6]); return false;"
+                                    class="action-btn">
                                     <i class="fa-solid fa-file-export"></i>
                                     <span>Report</span>
                                 </a>
-                                <a href="404.html" class="action-btn">
+                                <a href="#"
+                                    onclick="document.querySelector('.notification-bell').click(); return false;"
+                                    class="action-btn">
                                     <i class="fa-regular fa-paper-plane"></i>
                                     <span>Notify</span>
                                 </a>
@@ -497,7 +616,8 @@
                 <p style="color: var(--text-muted); font-size: 0.875rem;">Review and approve pending payroll batches for
                     this month.</p>
             </div>
-            <button class="btn btn-primary"><i class="fa-solid fa-check-double"></i> Approve All</button>
+            <button class="btn btn-primary" onclick="approveAllBatches(this)"><i class="fa-solid fa-check-double"></i>
+                Approve All</button>
         </div>
 
         <div class="kpi-grid" style="margin-bottom: 2rem;">
@@ -547,9 +667,10 @@
                                     style="background: rgba(243, 156, 18, 0.1); color: #f39c12; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;"><i
                                         class="fa-solid fa-circle-pause"></i> Pending</span></td>
                             <td style="padding: 1rem; text-align: right;">
-                                <button class="btn hover-glow"
+                                <button class="btn hover-glow" onclick="approveBatch(this)"
                                     style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer; margin-right: 0.5rem;">Approve</button>
                                 <button class="btn btn-outline"
+                                    onclick="showToast('Viewing PRL-ENG-0826 batch details...', 'info')"
                                     style="padding: 0.4rem 0.8rem; font-size: 0.875rem;">Review</button>
                             </td>
                         </tr>
@@ -565,9 +686,10 @@
                                     style="background: rgba(243, 156, 18, 0.1); color: #f39c12; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;"><i
                                         class="fa-solid fa-circle-pause"></i> Pending</span></td>
                             <td style="padding: 1rem; text-align: right;">
-                                <button class="btn hover-glow"
+                                <button class="btn hover-glow" onclick="approveBatch(this)"
                                     style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer; margin-right: 0.5rem;">Approve</button>
                                 <button class="btn btn-outline"
+                                    onclick="showToast('Viewing PRL-SAL-0826 batch details...', 'info')"
                                     style="padding: 0.4rem 0.8rem; font-size: 0.875rem;">Review</button>
                             </td>
                         </tr>
@@ -583,9 +705,10 @@
                                     style="background: rgba(243, 156, 18, 0.1); color: #f39c12; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;"><i
                                         class="fa-solid fa-circle-pause"></i> Pending</span></td>
                             <td style="padding: 1rem; text-align: right;">
-                                <button class="btn hover-glow"
+                                <button class="btn hover-glow" onclick="approveBatch(this)"
                                     style="padding: 0.4rem 0.8rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: none; border-radius: 6px; cursor: pointer; margin-right: 0.5rem;">Approve</button>
                                 <button class="btn btn-outline"
+                                    onclick="showToast('Viewing PRL-MKT-0826 batch details...', 'info')"
                                     style="padding: 0.4rem 0.8rem; font-size: 0.875rem;">Review</button>
                             </td>
                         </tr>
@@ -626,7 +749,8 @@
                     <input type="text" placeholder="Search employee..."
                         style="padding: 0.5rem 1rem 0.5rem 2.5rem; border: 1px solid var(--primary-light); border-radius: 8px; font-family: 'Inter', sans-serif; background: transparent;">
                 </div>
-                <button class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Add Employee</button>
+                <button class="btn btn-primary" onclick="showToast('Opening employee onboarding form...', 'info')"><i
+                        class="fa-solid fa-user-plus"></i> Add Employee</button>
             </div>
         </div>
 
@@ -658,8 +782,9 @@
                             <td style="padding: 1rem; font-weight: 600;">&#8377;18.0L</td>
                             <td style="padding: 1rem; color: var(--text-muted);">Jan 2026</td>
                             <td style="padding: 1rem; text-align: right;">
-                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.875rem;"><i
-                                        class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="btn btn-outline" onclick="showToast('Employee record opened', 'info')"
+                                    style="padding: 0.3rem 0.6rem; font-size: 0.875rem;"><i class="fa-solid fa-pen"></i>
+                                    Edit</button>
                             </td>
                         </tr>
                         <tr style="border-bottom: 1px solid var(--primary-light);">
@@ -676,8 +801,9 @@
                             <td style="padding: 1rem; font-weight: 600;">&#8377;12.5L</td>
                             <td style="padding: 1rem; color: var(--text-muted);">Mar 2026</td>
                             <td style="padding: 1rem; text-align: right;">
-                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.875rem;"><i
-                                        class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="btn btn-outline" onclick="showToast('Employee record opened', 'info')"
+                                    style="padding: 0.3rem 0.6rem; font-size: 0.875rem;"><i class="fa-solid fa-pen"></i>
+                                    Edit</button>
                             </td>
                         </tr>
                         <tr>
@@ -694,8 +820,9 @@
                             <td style="padding: 1rem; font-weight: 600;">&#8377;14.2L</td>
                             <td style="padding: 1rem; color: var(--text-muted);">Jan 2025</td>
                             <td style="padding: 1rem; text-align: right;">
-                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.875rem;"><i
-                                        class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="btn btn-outline" onclick="showToast('Employee record opened', 'info')"
+                                    style="padding: 0.3rem 0.6rem; font-size: 0.875rem;"><i class="fa-solid fa-pen"></i>
+                                    Edit</button>
                             </td>
                         </tr>
                     </tbody>
@@ -713,7 +840,8 @@
                 <p style="color: var(--text-muted); font-size: 0.875rem;">Review company-wide attendance and exceptions.
                 </p>
             </div>
-            <button class="btn btn-outline"><i class="fa-solid fa-download"></i> Export Report</button>
+            <button class="btn btn-outline" onclick="simulateDownload(this)"><i class="fa-solid fa-download"></i> Export
+                Report</button>
         </div>
 
         <div class="dash-grid-2">
@@ -735,14 +863,15 @@
                         <div style="display: flex; align-items: center; gap: 1rem;">
                             <div
                                 style="width: 40px; height: 40px; border-radius: 50%; background: rgba(243, 156, 18, 0.1); color: #f39c12; display: flex; align-items: center; justify-content: center;">
-                                <i class="fa-solid fa-clock"></i></div>
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
                             <div>
                                 <h5 style="margin: 0; font-size: 0.875rem;">Mike Johnson</h5>
                                 <span style="font-size: 0.75rem; color: var(--text-muted);">Engineering • Late by
                                     45m</span>
                             </div>
                         </div>
-                        <button class="btn btn-outline"
+                        <button class="btn btn-outline" onclick="showToast('Message sent to Mike Johnson', 'info')"
                             style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Message</button>
                     </div>
 
@@ -752,14 +881,15 @@
                         <div style="display: flex; align-items: center; gap: 1rem;">
                             <div
                                 style="width: 40px; height: 40px; border-radius: 50%; background: rgba(231, 76, 60, 0.1); color: #E74C3C; display: flex; align-items: center; justify-content: center;">
-                                <i class="fa-solid fa-user-xmark"></i></div>
+                                <i class="fa-solid fa-user-xmark"></i>
+                            </div>
                             <div>
                                 <h5 style="margin: 0; font-size: 0.875rem;">Emily Davis</h5>
                                 <span style="font-size: 0.75rem; color: var(--text-muted);">Sales • Unplanned
                                     Absence</span>
                             </div>
                         </div>
-                        <button class="btn btn-outline"
+                        <button class="btn btn-outline" onclick="showToast('Message sent to Emily Davis', 'info')"
                             style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Message</button>
                     </div>
 
@@ -769,14 +899,15 @@
                         <div style="display: flex; align-items: center; gap: 1rem;">
                             <div
                                 style="width: 40px; height: 40px; border-radius: 50%; background: rgba(243, 156, 18, 0.1); color: #f39c12; display: flex; align-items: center; justify-content: center;">
-                                <i class="fa-solid fa-clock"></i></div>
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
                             <div>
                                 <h5 style="margin: 0; font-size: 0.875rem;">Chris Lee</h5>
                                 <span style="font-size: 0.75rem; color: var(--text-muted);">Marketing • Late by
                                     20m</span>
                             </div>
                         </div>
-                        <button class="btn btn-outline"
+                        <button class="btn btn-outline" onclick="showToast('Message sent to Chris Lee', 'info')"
                             style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Message</button>
                     </div>
                 </div>
@@ -794,8 +925,10 @@
                 </p>
             </div>
             <div style="display: flex; gap: 1rem;">
-                <button class="btn btn-outline"><i class="fa-solid fa-filter"></i> Filter</button>
-                <button class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> View Calendar</button>
+                <button class="btn btn-outline" onclick="showToast('Filtered leave requests', 'info')"><i
+                        class="fa-solid fa-filter"></i> Filter</button>
+                <button class="btn btn-primary" onclick="showToast('Opening leave calendar...', 'info')"><i
+                        class="fa-solid fa-calendar-check"></i> View Calendar</button>
             </div>
         </div>
 
@@ -836,10 +969,10 @@
                 </div>
 
                 <div style="display: flex; gap: 1rem; margin-top: auto;">
-                    <button class="btn"
+                    <button class="btn" onclick="handleLeaveAction(this, 'approved')"
                         style="flex: 1; padding: 0.5rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.2);"><i
                             class="fa-solid fa-check"></i> Approve</button>
-                    <button class="btn"
+                    <button class="btn" onclick="handleLeaveAction(this, 'rejected')"
                         style="flex: 1; padding: 0.5rem; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border: 1px solid rgba(231, 76, 60, 0.2);"><i
                             class="fa-solid fa-xmark"></i> Reject</button>
                 </div>
@@ -881,10 +1014,10 @@
                 </div>
 
                 <div style="display: flex; gap: 1rem; margin-top: auto;">
-                    <button class="btn"
+                    <button class="btn" onclick="handleLeaveAction(this, 'approved')"
                         style="flex: 1; padding: 0.5rem; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.2);"><i
                             class="fa-solid fa-check"></i> Approve</button>
-                    <button class="btn"
+                    <button class="btn" onclick="handleLeaveAction(this, 'rejected')"
                         style="flex: 1; padding: 0.5rem; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border: 1px solid rgba(231, 76, 60, 0.2);"><i
                             class="fa-solid fa-xmark"></i> Reject</button>
                 </div>
@@ -901,7 +1034,8 @@
                 <p style="color: var(--text-muted); font-size: 0.875rem;">Analyze base salary vs allowances across
                     departments.</p>
             </div>
-            <button class="btn btn-primary"><i class="fa-solid fa-download"></i> Export PDF</button>
+            <button class="btn btn-primary" onclick="simulateDownload(this)"><i class="fa-solid fa-download"></i> Export
+                PDF</button>
         </div>
 
         <div class="dash-panel" data-aos="fade-up" style="margin-bottom: 2rem;">
@@ -968,8 +1102,73 @@
     <!-- AOS Animation JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main-v2.js?v=10"></script>
     <script>
+        // Dropdown Handlers
+        function toggleNotifDropdown(e, el) {
+            if (e) {
+                if (e.target && e.target.closest('.notification-dropdown')) return;
+                e.stopPropagation();
+            }
+            const bell = el || document.querySelector('.notification-bell');
+            if (!bell) return;
+            const dropdown = bell.querySelector('.notification-dropdown');
+            document.querySelectorAll('.profile-dropdown').forEach(d => d.classList.remove('active'));
+            if (dropdown) {
+                dropdown.classList.toggle('active');
+            }
+        }
+
+        function toggleProfileDropdown(e, el) {
+            if (e) {
+                if (e.target && e.target.closest('.profile-dropdown')) return;
+                e.stopPropagation();
+            }
+            const profile = el || document.querySelector('.user-profile');
+            if (!profile) return;
+            const dropdown = profile.querySelector('.profile-dropdown');
+            document.querySelectorAll('.notification-dropdown').forEach(d => d.classList.remove('active'));
+            if (dropdown) {
+                dropdown.classList.toggle('active');
+            }
+        }
+
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.notification-bell')) {
+                document.querySelectorAll('.notification-dropdown').forEach(d => d.classList.remove('active'));
+            }
+            if (!e.target.closest('.user-profile')) {
+                document.querySelectorAll('.profile-dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
+
+        // Profile sync from localStorage
+        (function syncUserProfile() {
+            const loginEmail = localStorage.getItem('loginEmail');
+            const loginName = localStorage.getItem('loginName');
+            if (loginEmail && loginName) {
+                const profileEmailEl = document.getElementById('profile-email');
+                const profileNameEl = document.getElementById('profile-name');
+                const profileAvatarEl = document.getElementById('profile-avatar');
+                const welcomeNameEl = document.getElementById('welcome-name');
+                const dropdownProfileName = document.getElementById('dropdown-profile-name');
+                const dropdownProfileEmail = document.getElementById('dropdown-profile-email');
+
+                if (profileEmailEl) profileEmailEl.innerText = loginEmail;
+                if (profileNameEl) profileNameEl.innerText = loginName;
+                if (profileAvatarEl) profileAvatarEl.innerText = loginName.charAt(0).toUpperCase();
+                if (welcomeNameEl) {
+                    const firstName = loginName.split(' ')[0];
+                    welcomeNameEl.innerText = firstName;
+                }
+                if (dropdownProfileName) dropdownProfileName.innerText = loginName;
+                if (dropdownProfileEmail) dropdownProfileEmail.innerText = loginEmail;
+                document.querySelectorAll('.profile-dropdown .user-avatar').forEach(av => {
+                    av.innerText = loginName.charAt(0).toUpperCase();
+                });
+            }
+        })();
+
         document.addEventListener('DOMContentLoaded', function () {
             const ctx = document.getElementById('payrollBarChart').getContext('2d');
             new Chart(ctx, {
@@ -1012,6 +1211,8 @@
             const sidebar = document.querySelector('.sidebar');
             if (sidebar) {
                 sidebar.classList.remove('active');
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
             }
 
             // Show target view

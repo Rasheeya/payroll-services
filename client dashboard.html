@@ -88,16 +88,98 @@
                     <a href="index.html" class="mobile-logo" style="display: none; margin-right: auto;">
                         <img src="assets/logo.webp" alt="STACKLY Logo" style="height: 32px; width: auto;">
                     </a>
-                    <div class="notification-bell">
+                    <div class="notification-bell" id="client-notification-bell" title="Notifications" onclick="toggleNotifDropdown(event, this)">
                         <i class="fa-solid fa-bell"></i>
                         <div class="notification-dot"></div>
+                        <!-- Notification Dropdown -->
+                        <div class="notification-dropdown" id="client-notif-dropdown">
+                            <div class="dropdown-header">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <h4>Notifications</h4>
+                                    <span class="badge">2 New</span>
+                                </div>
+                                <button class="dropdown-mark-read">Mark all as read</button>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread" onclick="switchView('view-payslips', document.querySelectorAll('.sidebar-menu .menu-link')[1])">
+                                    <div class="notification-icon-box" style="background: rgba(24, 169, 153, 0.1); color: var(--accent);">
+                                        <i class="fa-solid fa-file-invoice"></i>
+                                    </div>
+                                    <div class="notification-item-content">
+                                        <h5>August Payslip Ready</h5>
+                                        <p>Your payslip for August 2026 is ready to download.</p>
+                                        <span class="time">10 min ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread" onclick="switchView('view-apply-leave', document.querySelectorAll('.sidebar-menu .menu-link')[4])">
+                                    <div class="notification-icon-box" style="background: rgba(46, 204, 113, 0.1); color: #2ecc71;">
+                                        <i class="fa-solid fa-calendar-check"></i>
+                                    </div>
+                                    <div class="notification-item-content">
+                                        <h5>Leave Request Approved</h5>
+                                        <p>Your 3-day leave request has been approved by HR.</p>
+                                        <span class="time">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item" onclick="switchView('view-tax-documents', document.querySelectorAll('.sidebar-menu .menu-link')[6])">
+                                    <div class="notification-icon-box" style="background: rgba(52, 152, 219, 0.1); color: #3498db;">
+                                        <i class="fa-solid fa-file-pdf"></i>
+                                    </div>
+                                    <div class="notification-item-content">
+                                        <h5>Form 16 Uploaded</h5>
+                                        <p>Your annual tax withholding document is available.</p>
+                                        <span class="time">Yesterday</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <button onclick="switchView('view-notification-prefs', document.querySelectorAll('.sidebar-menu .menu-link')[6])">Notification Settings</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="user-profile" style="color: var(--primary);">
-                        <div class="user-avatar" id="profile-avatar" style="background: var(--primary); color: var(--neutral);">J</div>
+                    <div class="user-profile" id="client-user-profile" style="color: var(--primary);" onclick="toggleProfileDropdown(event, this)">
+                        <div class="user-avatar" id="profile-avatar"
+                            style="background: var(--primary); color: var(--neutral);">J</div>
                         <div class="user-info">
                             <h5 style="margin-bottom: 0;" id="profile-name">John Doe</h5>
-                            <p style="margin-bottom: 0; color: var(--text-muted); font-size: 0.75rem;" id="profile-email">Senior Developer
+                            <p style="margin-bottom: 0; color: var(--text-muted); font-size: 0.75rem;"
+                                id="profile-email">Senior Developer
                             </p>
+                        </div>
+                        <!-- Profile Dropdown -->
+                        <div class="profile-dropdown" id="client-profile-dropdown">
+                            <div class="profile-dropdown-header">
+                                <div class="user-avatar" style="background: var(--primary); color: var(--neutral); width: 36px; height: 36px; font-size: 0.875rem;">J</div>
+                                <div>
+                                    <h5 style="margin: 0; font-size: 0.875rem; color: var(--primary);" id="dropdown-profile-name">John Doe</h5>
+                                    <p style="margin: 0; font-size: 0.75rem; color: var(--text-muted);" id="dropdown-profile-email">Senior Developer</p>
+                                </div>
+                            </div>
+                            <div class="profile-dropdown-menu">
+                                <button class="profile-menu-item" onclick="switchView('view-overview', document.querySelectorAll('.sidebar-menu .menu-link')[0])">
+                                    <i class="fa-solid fa-wallet"></i> Payroll Overview
+                                </button>
+                                <button class="profile-menu-item" onclick="switchView('view-payslips', document.querySelectorAll('.sidebar-menu .menu-link')[1])">
+                                    <i class="fa-solid fa-file-contract"></i> My Payslips
+                                </button>
+                                <button class="profile-menu-item" onclick="switchView('view-attendance', document.querySelectorAll('.sidebar-menu .menu-link')[3])">
+                                    <i class="fa-solid fa-clipboard-user"></i> My Attendance
+                                </button>
+                                <button class="profile-menu-item" onclick="switchView('view-bank-details', document.querySelectorAll('.sidebar-menu .menu-link')[1])">
+                                    <i class="fa-solid fa-building-columns"></i> Bank Details
+                                </button>
+                                <button class="profile-menu-item" onclick="switchView('view-notification-prefs', document.querySelectorAll('.sidebar-menu .menu-link')[1])">
+                                    <i class="fa-solid fa-bell"></i> Notification Settings
+                                </button>
+                                <div class="profile-dropdown-divider"></div>
+                                <a href="admin dashboard.html" class="profile-menu-item" style="color: var(--accent);">
+                                    <i class="fa-solid fa-arrow-right-arrow-left" style="color: var(--accent);"></i> Switch to Admin View
+                                </a>
+                                <div class="profile-dropdown-divider"></div>
+                                <a href="login.html" class="profile-menu-item logout-item">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -256,18 +338,22 @@
                             <h4 style="color: var(--primary); margin-bottom: 1.5rem;">Quick Actions</h4>
                             <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
                                 <button class="btn hover-glow"
+                                    onclick="switchView('view-apply-leave', document.querySelectorAll('.sidebar-menu .menu-link')[4]); return false;"
                                     style="background: var(--primary-light); color: var(--primary); justify-content: flex-start; border-radius: 8px;"><i
                                         class="fa-solid fa-plane-departure" style="color: var(--accent);"></i> Request
                                     Leave</button>
                                 <button class="btn hover-glow"
+                                    onclick="showToast('Opening expense submission form...', 'info');"
                                     style="background: var(--primary-light); color: var(--primary); justify-content: flex-start; border-radius: 8px;"><i
                                         class="fa-solid fa-file-invoice" style="color: var(--accent);"></i> Submit
                                     Expense</button>
                                 <button class="btn hover-glow"
+                                    onclick="switchView('view-bank-details', document.querySelectorAll('.sidebar-menu .menu-link')[1]); return false;"
                                     style="background: var(--primary-light); color: var(--primary); justify-content: flex-start; border-radius: 8px;"><i
                                         class="fa-solid fa-user-pen" style="color: var(--accent);"></i> Update
                                     Profile</button>
                                 <button class="btn hover-glow"
+                                    onclick="showToast('Connecting to HR Support...', 'info');"
                                     style="background: var(--primary-light); color: var(--primary); justify-content: flex-start; border-radius: 8px;"><i
                                         class="fa-solid fa-circle-question" style="color: var(--accent);"></i> HR
                                     Support</button>
@@ -310,23 +396,23 @@
 
                         <div class="salary-breakdown">
                             <div class="salary-bar">
-                                <div class="sb-segment sb-basic" title="Basic Salary: ?40,000">60%</div>
-                                <div class="sb-segment sb-allow" title="Allowances: ?12,000">25%</div>
-                                <div class="sb-segment sb-deduct" title="Tax & Deductions: ?3,500">15%</div>
+                                <div class="sb-segment sb-basic" title="Basic Salary: ₹40,000">60%</div>
+                                <div class="sb-segment sb-allow" title="Allowances: ₹12,000">25%</div>
+                                <div class="sb-segment sb-deduct" title="Tax & Deductions: ₹3,500">15%</div>
                             </div>
 
                             <div class="sb-legend">
                                 <div class="legend-item">
                                     <div class="legend-color" style="background: var(--primary);"></div>
-                                    Basic (?40k)
+                                    Basic (₹40k)
                                 </div>
                                 <div class="legend-item">
                                     <div class="legend-color" style="background: var(--accent);"></div>
-                                    Allowances (?12k)
+                                    Allowances (₹12k)
                                 </div>
                                 <div class="legend-item">
                                     <div class="legend-color" style="background: #E74C3C;"></div>
-                                    Deductions (?3.5k)
+                                    Deductions (₹3.5k)
                                 </div>
                             </div>
                         </div>
@@ -361,24 +447,25 @@
                             <div
                                 style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem;">
                                 <span style="color: rgba(255,255,255,0.7);">Net Salary</span>
-                                <strong style="color: var(--accent);">?48,500</strong>
+                                <strong style="color: var(--accent);">₹48,500</strong>
                             </div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
                                 <span style="color: rgba(255,255,255,0.7); font-size: 0.875rem;">Gross</span>
-                                <span style="font-size: 0.875rem;">?52,000</span>
+                                <span style="font-size: 0.875rem;">₹52,000</span>
                             </div>
                             <div style="display: flex; justify-content: space-between;">
                                 <span style="color: rgba(255,255,255,0.7); font-size: 0.875rem;">Deductions</span>
-                                <span style="font-size: 0.875rem;">?3,500</span>
+                                <span style="font-size: 0.875rem;">₹3,500</span>
                             </div>
                         </div>
 
                         <div style="display: flex; gap: 1rem; margin-top: 2rem; position: relative; z-index: 2;">
-                            <button class="btn btn-accent" style="flex: 1; padding: 0.5rem;"><i
-                                    class="fa-solid fa-eye"></i>
+                            <button class="btn btn-accent" style="flex: 1; padding: 0.5rem;"
+                                onclick="switchView('view-payslips', document.querySelectorAll('.sidebar-menu .menu-link')[1]); return false;"><i class="fa-solid fa-eye"></i>
                                 View</button>
-                            <button class="btn btn-outline-neutral" style="flex: 1; padding: 0.5rem;"><i
-                                    class="fa-solid fa-download"></i> Download</button>
+                            <button class="btn btn-outline-neutral" style="flex: 1; padding: 0.5rem;"
+                                onclick="simulateDownload(this)"><i class="fa-solid fa-download"></i>
+                                Download</button>
                         </div>
                     </div>
 
@@ -410,7 +497,8 @@
                                         <td style="padding: 1rem;">$3,500</td>
                                         <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$48,500</td>
                                         <td style="padding: 1rem; text-align: right;">
-                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"
+                                                onclick="simulateDownload(this)"><i
                                                     class="fa-solid fa-download"></i></button>
                                         </td>
                                     </tr>
@@ -420,7 +508,8 @@
                                         <td style="padding: 1rem;">$3,500</td>
                                         <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$48,500</td>
                                         <td style="padding: 1rem; text-align: right;">
-                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"
+                                                onclick="simulateDownload(this)"><i
                                                     class="fa-solid fa-download"></i></button>
                                         </td>
                                     </tr>
@@ -430,7 +519,8 @@
                                         <td style="padding: 1rem;">$3,500</td>
                                         <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$48,500</td>
                                         <td style="padding: 1rem; text-align: right;">
-                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"
+                                                onclick="simulateDownload(this)"><i
                                                     class="fa-solid fa-download"></i></button>
                                         </td>
                                     </tr>
@@ -440,7 +530,8 @@
                                         <td style="padding: 1rem;">$3,200</td>
                                         <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$46,800</td>
                                         <td style="padding: 1rem; text-align: right;">
-                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"
+                                                onclick="simulateDownload(this)"><i
                                                     class="fa-solid fa-download"></i></button>
                                         </td>
                                     </tr>
@@ -450,7 +541,8 @@
                                         <td style="padding: 1rem;">$3,200</td>
                                         <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$46,800</td>
                                         <td style="padding: 1rem; text-align: right;">
-                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"
+                                                onclick="simulateDownload(this)"><i
                                                     class="fa-solid fa-download"></i></button>
                                         </td>
                                     </tr>
@@ -460,7 +552,8 @@
                                         <td style="padding: 1rem;">$3,200</td>
                                         <td style="padding: 1rem; color: var(--accent); font-weight: 600;">$46,800</td>
                                         <td style="padding: 1rem; text-align: right;">
-                                            <button class="btn btn-outline" style="padding: 0.5rem;"><i
+                                            <button class="btn btn-outline" style="padding: 0.5rem;"
+                                                onclick="simulateDownload(this)"><i
                                                     class="fa-solid fa-download"></i></button>
                                         </td>
                                     </tr>
@@ -471,8 +564,8 @@
                 </div>
             </div>
 
-            
-<div id='view-payroll-history' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+
+            <div id='view-payroll-history' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
                 <div style="margin-bottom: 2rem;">
                     <h2>Payroll History</h2>
                     <p style="color: var(--text-muted); font-size: 0.875rem;">Your past payroll records.</p>
@@ -550,8 +643,8 @@
                 </div>
             </div>
 
-            
-<div id='view-attendance' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+
+            <div id='view-attendance' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
                 <div style="margin-bottom: 2rem;">
                     <h2>My Attendance</h2>
                     <p style="color: var(--text-muted); font-size: 0.875rem;">Your attendance records.</p>
@@ -605,8 +698,8 @@
                 </div>
             </div>
 
-            
-<div id='view-apply-leave' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+
+            <div id='view-apply-leave' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
                 <div style="margin-bottom: 2rem;">
                     <h2>Apply Leave</h2>
                     <p style="color: var(--text-muted); font-size: 0.875rem;">Submit a new leave request.</p>
@@ -640,20 +733,23 @@
                             <textarea rows="4"
                                 style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--primary-light); background: var(--bg-color); resize: vertical;"></textarea>
                         </div>
-                        <button type="button" class="btn btn-primary">Submit Request</button>
+                        <button type="button" class="btn btn-primary"
+                            onclick="showToast('Leave request submitted successfully!', 'success'); this.closest('form').reset();">Submit
+                            Request</button>
                     </form>
                 </div>
             </div>
 
-            
-<div id='view-tax-documents' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+
+            <div id='view-tax-documents' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
                 <div style="margin-bottom: 2rem;">
                     <h2>Tax Documents</h2>
                     <p style="color: var(--text-muted); font-size: 0.875rem;">Your tax forms and documents.</p>
                 </div>
                 <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
                     <div class="dash-panel hover-glow"
-                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;"
+                        onclick="simulateDownload(this)">
                         <div
                             style="width: 48px; height: 48px; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
                             <i class="fa-solid fa-file-pdf"></i>
@@ -664,7 +760,8 @@
                         </div>
                     </div>
                     <div class="dash-panel hover-glow"
-                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;"
+                        onclick="simulateDownload(this)">
                         <div
                             style="width: 48px; height: 48px; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
                             <i class="fa-solid fa-file-pdf"></i>
@@ -675,7 +772,8 @@
                         </div>
                     </div>
                     <div class="dash-panel hover-glow"
-                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;"
+                        onclick="simulateDownload(this)">
                         <div
                             style="width: 48px; height: 48px; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
                             <i class="fa-solid fa-file-pdf"></i>
@@ -686,7 +784,8 @@
                         </div>
                     </div>
                     <div class="dash-panel hover-glow"
-                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer;"
+                        onclick="simulateDownload(this)">
                         <div
                             style="width: 48px; height: 48px; background: rgba(231, 76, 60, 0.1); color: #E74C3C; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
                             <i class="fa-solid fa-file-pdf"></i>
@@ -699,8 +798,8 @@
                 </div>
             </div>
 
-            
-<div id='view-bank-details' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+
+            <div id='view-bank-details' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
                 <div style="margin-bottom: 2rem;">
                     <h2>Bank Details</h2>
                     <p style="color: var(--text-muted); font-size: 0.875rem;">Update your direct deposit info.</p>
@@ -726,12 +825,12 @@
                         </p>
                         <p style="margin: 0; font-weight: 600;">021000021</p>
                     </div>
-                    <button class="btn btn-outline" style="width: 100%;">Request Change</button>
+                    <button class="btn btn-outline" style="width: 100%;" onclick="showToast('Bank details change request submitted to HR for approval.', 'success')">Request Change</button>
                 </div>
             </div>
 
-            
-<div id='view-notification-prefs' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
+
+            <div id='view-notification-prefs' class='spa-view' style='display: none; animation: fadeIn 0.4s ease;'>
                 <div style="margin-bottom: 2rem;">
                     <h2>Notification Preferences</h2>
                     <p style="color: var(--text-muted); font-size: 0.875rem;">Manage your alerts.</p>
@@ -745,7 +844,7 @@
                                 updates via email.</p>
                         </div>
                         <div
-                            style="width: 44px; height: 24px; background: var(--accent); border-radius: 12px; position: relative; cursor: pointer;">
+                            style="width: 44px; height: 24px; background: var(--accent); border-radius: 12px; position: relative; cursor: pointer;" onclick="this.style.background = this.style.background === 'var(--text-muted)' ? 'var(--accent)' : 'var(--text-muted)'; showToast('Preference updated', 'info');">
                             <div
                                 style="width: 20px; height: 20px; background: white; border-radius: 50%; position: absolute; right: 2px; top: 2px;">
                             </div>
@@ -759,7 +858,7 @@
                                 urgent HR updates.</p>
                         </div>
                         <div
-                            style="width: 44px; height: 24px; background: var(--text-muted); border-radius: 12px; position: relative; cursor: pointer;">
+                            style="width: 44px; height: 24px; background: var(--text-muted); border-radius: 12px; position: relative; cursor: pointer;" onclick="this.style.background = this.style.background === 'var(--accent)' ? 'var(--text-muted)' : 'var(--accent)'; showToast('Preference updated', 'info');">
                             <div
                                 style="width: 20px; height: 20px; background: white; border-radius: 50%; position: absolute; left: 2px; top: 2px;">
                             </div>
@@ -767,17 +866,84 @@
                     </div>
                 </div>
             </div>
-        
-</main>
+
+        </main>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
+        // Dropdown Handlers
+        function toggleNotifDropdown(e, el) {
+            if (e) {
+                if (e.target && e.target.closest('.notification-dropdown')) return;
+                e.stopPropagation();
+            }
+            const bell = el || document.querySelector('.notification-bell');
+            if (!bell) return;
+            const dropdown = bell.querySelector('.notification-dropdown');
+            document.querySelectorAll('.profile-dropdown').forEach(d => d.classList.remove('active'));
+            if (dropdown) {
+                dropdown.classList.toggle('active');
+            }
+        }
+
+        function toggleProfileDropdown(e, el) {
+            if (e) {
+                if (e.target && e.target.closest('.profile-dropdown')) return;
+                e.stopPropagation();
+            }
+            const profile = el || document.querySelector('.user-profile');
+            if (!profile) return;
+            const dropdown = profile.querySelector('.profile-dropdown');
+            document.querySelectorAll('.notification-dropdown').forEach(d => d.classList.remove('active'));
+            if (dropdown) {
+                dropdown.classList.toggle('active');
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.notification-bell')) {
+                document.querySelectorAll('.notification-dropdown').forEach(d => d.classList.remove('active'));
+            }
+            if (!e.target.closest('.user-profile')) {
+                document.querySelectorAll('.profile-dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
+
+        // Profile sync from localStorage
+        (function syncUserProfile() {
+            const loginEmail = localStorage.getItem('loginEmail');
+            const loginName = localStorage.getItem('loginName');
+            if (loginEmail && loginName) {
+                const profileEmailEl = document.getElementById('profile-email');
+                const profileNameEl = document.getElementById('profile-name');
+                const profileAvatarEl = document.getElementById('profile-avatar');
+                const welcomeNameEl = document.getElementById('welcome-name');
+                const dropdownProfileName = document.getElementById('dropdown-profile-name');
+                const dropdownProfileEmail = document.getElementById('dropdown-profile-email');
+
+                if (profileEmailEl) profileEmailEl.innerText = loginEmail;
+                if (profileNameEl) profileNameEl.innerText = loginName;
+                if (profileAvatarEl) profileAvatarEl.innerText = loginName.charAt(0).toUpperCase();
+                if (welcomeNameEl) {
+                    const firstName = loginName.split(' ')[0];
+                    welcomeNameEl.innerText = firstName;
+                }
+                if (dropdownProfileName) dropdownProfileName.innerText = loginName;
+                if (dropdownProfileEmail) dropdownProfileEmail.innerText = loginEmail;
+                document.querySelectorAll('.profile-dropdown .user-avatar').forEach(av => {
+                    av.innerText = loginName.charAt(0).toUpperCase();
+                });
+            }
+        })();
+
         function switchView(viewId, element) {
             // ALWAYS close sidebar immediately on click
             const sidebar = document.querySelector('.sidebar');
             if (sidebar) {
                 sidebar.classList.remove('active');
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
             }
 
             const targetView = document.getElementById(viewId);
@@ -787,8 +953,8 @@
 
             document.querySelectorAll('.spa-view').forEach(el => el.style.display = 'none');
             targetView.style.display = 'block';
-        window.scrollTo(0, 0);
-        window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
 
             document.querySelectorAll('.menu-link').forEach(el => el.classList.remove('active'));
             if (element) element.classList.add('active');
@@ -799,9 +965,7 @@
             }
         }
     </script>
-    <script src="js/main.js"></script>
+    <script src="js/main-v2.js?v=10"></script>
 </body>
 
 </html>
-
-
